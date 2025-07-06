@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: Mental Health -->
+    <!-- Function: To explore the link between the menstrual cycle and mental health, with a supportive mood quiz and resources. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health and Your Menstrual Cycle: PMS & PMDD | Menstrual Guide</title>
+    <meta name="description" content="Explore the connection between your menstrual cycle and mental health. Learn about PMS and PMDD, take our supportive mood quiz, and find resources for well-being.">
+    <link rel="canonical" href="https://www.yourdomain.com/mental-health.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & CORE STYLES */
+        :root {
+            --color-primary: #8667a8; --color-secondary: #e6a4b4; --color-accent: #a2c4c9; --color-accent-light: #f3d9e1; --color-text: #333333; --color-text-light: #555555; --color-bg: #ffffff; --color-bg-soft: #f9f7fb; --font-heading: 'Poppins', sans-serif; --font-body: 'Lato', sans-serif; --container-width: 1140px; --transition-speed: 0.3s ease;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--color-text); background-color: var(--color-bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); } h2 { font-size: clamp(2rem, 4vw, 2.5rem); } h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1rem; color: var(--color-text-light); }
+        a { color: var(--color-secondary); text-decoration: none; } a:hover { color: var(--color-primary); }
+        .container { max-width: var(--container-width); margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
+        .section { padding: 5rem 0; } .section-title { text-align: center; margin-bottom: 3rem; }
+        .bg-soft { background-color: var(--color-bg-soft); }
+        .btn { display: inline-block; padding: 0.85rem 2rem; background-color: var(--color-primary); color: white; border-radius: 50px; font-weight: bold; transition: all var(--transition-speed); border: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background-color: var(--color-secondary); border-color: var(--color-secondary); transform: translateY(-3px); }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(134, 103, 168, 0.1); padding: 2rem; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* HEADER & FOOTER */
+        .header { position: sticky; top: 0; width:100%; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-container, .footer-grid { max-width: var(--container-width); margin: auto; padding: 0 1.5rem; }
+        .header-container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .header__logo { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; font-weight: 700; }
+        .header__nav { display: block; } .header__nav ul { display: flex; list-style: none; gap: 2rem; }
+        .header__nav a { font-weight: 700; color: var(--color-text-light); position: relative; padding: 0.25rem 0; }
+        .header__nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-secondary); transition: width var(--transition-speed); }
+        .header__nav a:hover::after, .header__nav a.active::after { width: 100%; }
+        .header__burger { display: none; }
+        .footer { background-color: var(--color-bg-soft); color: var(--color-text-light); padding: 4rem 0 2rem; border-top: 4px solid var(--color-accent-light); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #e0d8e9; padding-top: 2rem; }
+
+        /* PAGE-SPECIFIC STYLES: MENTAL HEALTH */
+        .page-header { text-align: center; padding: 4rem 0; background-color: var(--color-bg-soft); }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .comparison-grid h3 { color: var(--color-secondary); }
+        .comparison-grid ul { list-style: '›'; padding-left: 1rem; }
+        .comparison-grid li { padding-left: 0.5rem; margin-bottom: 0.5rem; }
+
+        #mood-quiz-container { max-width: 700px; margin: 0 auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(134, 103, 168, 0.1); }
+        .quiz-question p { font-size: 1.2rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.5rem; text-align: center; }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .quiz-options button { width: 100%; text-align: left; padding: 1rem; font-size: 1rem; border: 2px solid var(--color-accent-light); background: #fff; border-radius: 8px; cursor: pointer; transition: all var(--transition-speed); }
+        .quiz-options button:hover { border-color: var(--color-secondary); background: var(--color-accent-light); }
+        .quiz-result { text-align: center; animation: fadeIn 0.5s; }
+        #restart-quiz-btn { margin-top: 1.5rem; background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .resource-card { text-align: center; }
+        .resource-card a { display: block; margin-top: 1rem; font-weight: bold; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } .header__nav { display: none; } }
+        @media (max-width: 768px) {
+            .section { padding: 3rem 0; } .header__nav.active { display: block; position: fixed; top: 80px; left: 0; width: 100%; height: calc(100vh - 80px); background: #fff; transform: translateX(0); padding: 2rem; }
+            .nav-open .header__nav { transform: translateX(0); } body.nav-open { overflow: hidden; }
+            .header__burger { display: block; /* Basic styles, assumed from other pages */ } .footer-grid, .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="page-header"></header>
+    <main>
+        <section class="page-header">
+            <div class="container fade-in">
+                <h1>Your Mood is Part of Your Cycle</h1>
+                <p>The rise and fall of hormones don't just affect your body; they have a profound impact on your mind. Feeling emotional, irritable, or anxious before your period is a real, biological experience. You are not alone.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">PMS vs. PMDD: What's the Difference?</h2>
+                <div class="comparison-grid">
+                    <div class="card">
+                        <h3>Premenstrual Syndrome (PMS)</h3>
+                        <p>Affects up to 75% of menstruating people. Symptoms are typically mild to moderate and do not significantly interfere with daily life.</p>
+                        <ul>
+                            <li>Mood swings, irritability</li>
+                            <li>Bloating, breast tenderness</li>
+                            <li>Food cravings</li>
+                            <li>Fatigue</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Premenstrual Dysphoric Disorder (PMDD)</h3>
+                        <p>A more severe form of PMS, affecting about 5% of people. Symptoms are debilitating and can seriously impact work, school, and relationships.</p>
+                        <ul>
+                            <li>Severe depression, anxiety, or anger</li>
+                            <li>Feelings of hopelessness</li>
+                            <li>Panic attacks</li>
+                            <li>Suicidal thoughts</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem;"><strong>Important:</strong> If you experience severe symptoms or suicidal thoughts, please seek immediate help from a healthcare professional or a crisis hotline.</p>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container fade-in">
+                <h2 class="section-title">How Are You Feeling?</h2>
+                <div id="mood-quiz-container" role="form" aria-live="polite">
+                    <!-- JS Mood Quiz will render here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">Support & Resources</h2>
+                <div class="resources-grid">
+                    <div class="card resource-card">
+                        <h4>Cycle Tracking</h4>
+                        <p>Tracking your symptoms can help you identify patterns and prepare for the luteal phase. Knowledge is power.</p>
+                        <a href="cycle.html">Learn to Track →</a>
+                    </div>
+                    <div class="card resource-card">
+                        <h4>Mindful Movement</h4>
+                        <p>Gentle exercise like yoga, stretching, or walking can boost mood-lifting endorphins and ease physical discomfort.</p>
+                        <a href="#">Find a Routine →</a>
+                    </div>
+                    <div class="card resource-card">
+                        <h4>Professional Help</h4>
+                        <p>Therapy, counseling, and medical advice can provide you with tools and treatments to manage severe symptoms. </p>
+                        <a href="contact.html">Ask Our Experts →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container fade-in">
+                <h2 class="section-title">Recommended Books for Mental Health & Periods</h2>
+                <p style="text-align: center; margin-bottom: 3rem;">Deepen your understanding of the mind-body connection during your cycle</p>
+                <div class="resources-grid">
+                    <div class="card resource-card">
+                        <h4>Period Power</h4>
+                        <p>Discover how to work with your menstrual cycle for better mental health, productivity, and overall wellbeing throughout the month.</p>
+                        <a href="https://amzn.to/4ly2vaB" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: auto;">Get the Book →</a>
+                    </div>
+                    <div class="card resource-card">
+                        <h4>The Menstrual Cycle Guide</h4>
+                        <p>Learn about the hormonal changes that affect your mood and mental state, with practical strategies for managing emotional symptoms.</p>
+                        <a href="https://amzn.to/406Lj3b" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: auto;">Get the Book →</a>
+                    </div>
+                    <div class="card resource-card">
+                        <h4>Women's Health & Periods</h4>
+                        <p>A holistic guide that explores the connection between menstrual health and mental wellbeing, with evidence-based approaches to self-care.</p>
+                        <a href="https://amzn.to/46w6m31" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: auto;">Get the Book →</a>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--color-text-light);">
+                    <em>Note: As an Amazon Associate, we may earn from qualifying purchases.</em>
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="page-footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CORE SCRIPT ---
+            const loadComponent = (id, url) => fetch(url).then(r => r.text()).then(d => { document.getElementById(id).innerHTML = d; if(id==='page-header') setupHeader(); }).catch(e => console.error(e));
+            const setupHeader = () => { /* Logic from previous pages */ };
+            loadComponent('page-header', 'components/header.html'); loadComponent('page-footer', 'components/footer.html');
+
+            // --- PAGE-SPECIFIC SCRIPT: MOOD QUIZ ---
+            const quizContainer = document.getElementById('mood-quiz-container');
+            const quizData = [
+                { question: "In the week before your period, how often do you feel irritable or angry?", options: [ {text: "Rarely", score: 0}, {text: "Sometimes", score: 1}, {text: "Often", score: 2} ] },
+                { question: "How much do mood swings affect your relationships or work?", options: [ {text: "Not much", score: 0}, {text: "A little", score: 1}, {text: "Significantly", score: 2} ] },
+                { question: "Do you experience feelings of sadness or hopelessness before your period?", options: [ {text: "Almost never", score: 0}, {text: "Occasionally", score: 1}, {text: "Most cycles", score: 2} ] },
+                { question: "How would you rate your anxiety levels in the premenstrual phase?", options: [ {text: "Low", score: 0}, {text: "Moderate", score: 1}, {text: "High or overwhelming", score: 2} ] }
+            ];
+            const results = {
+                low: { title: "It sounds like you're navigating your cycle well.", text: "You might experience mild fluctuations, which is very normal. Focusing on self-care like good sleep and nutrition during your luteal phase can help you feel your best." },
+                medium: { title: "It seems you're dealing with standard PMS.", text: "These feelings are common and valid. Tracking your cycle, gentle exercise, and being mindful of your diet can make a big difference. You're not alone in this." },
+                high: { title: "Your symptoms sound very challenging.", text: "What you're feeling is intense and may be more than typical PMS. We strongly encourage you to share these results with a doctor. They can discuss potential treatments for conditions like PMDD. Your well-being is the top priority." }
+            };
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function renderQuiz() {
+                if (currentQuestionIndex < quizData.length) {
+                    const q = quizData[currentQuestionIndex];
+                    quizContainer.innerHTML = `<div class="quiz-question"><p>${q.question}</p><div class="quiz-options">${q.options.map(opt => `<button data-score="${opt.score}">${opt.text}</button>`).join('')}</div></div>`;
+                } else {
+                    showResult();
+                }
+            }
+
+            function showResult() {
+                let resultKey = 'low';
+                if (score >= 5) resultKey = 'high';
+                else if (score >= 2) resultKey = 'medium';
+                const result = results[resultKey];
+                quizContainer.innerHTML = `<div class="quiz-result"><h3>${result.title}</h3><p>${result.text}</p><p><em>This is not a medical diagnosis. Please consult a healthcare provider for professional advice.</em></p><button id="restart-quiz-btn" class="btn">Take Again</button></div>`;
+            }
+
+            if(quizContainer) {
+                quizContainer.addEventListener('click', e => {
+                    if (e.target.tagName === 'BUTTON') {
+                        if (e.target.id === 'restart-quiz-btn') {
+                            currentQuestionIndex = 0; score = 0; renderQuiz(); return;
+                        }
+                        score += parseInt(e.target.dataset.score);
+                        currentQuestionIndex++;
+                        renderQuiz();
+                    }
+                });
+                renderQuiz();
+            }
+
+            // Intersection Observer
+            const faders = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')));
+            faders.forEach(fader => observer.observe(fader));
+        });
+    </script>
+</body>
+</html>

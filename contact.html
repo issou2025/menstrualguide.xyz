@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: Contact -->
+    <!-- Function: To provide a contact form for user inquiries and display site information. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Ask an Expert | Menstrual Guide</title>
+    <meta name="description" content="Have a question for our experts or a suggestion for the site? Use our contact form to get in touch. We'd love to hear from you.">
+    <link rel="canonical" href="https://www.yourdomain.com/contact.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & CORE STYLES */
+        :root{--color-primary:#8667a8;--color-secondary:#e6a4b4;--color-accent:#a2c4c9;--color-accent-light:#f3d9e1;--color-text:#333;--color-text-light:#555;--color-bg:#fff;--color-bg-soft:#f9f7fb;--font-heading:'Poppins',sans-serif;--font-body:'Lato',sans-serif;--container-width:1140px;--transition-speed:0.3s ease}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.7}h1,h2,h3,h4{font-family:var(--font-heading);color:var(--color-primary);line-height:1.2;margin-bottom:1rem;font-weight:600}h1{font-size:clamp(2.5rem,5vw,3.5rem)}p{margin-bottom:1rem;color:var(--color-text-light)}a{color:var(--color-secondary);text-decoration:none}
+        .container{max-width:var(--container-width);margin:auto;padding:0 1.5rem}.section{padding:5rem 0}.section-title{text-align:center;margin-bottom:3rem}.bg-soft{background-color:var(--color-bg-soft)}.btn{display:inline-block;padding:.85rem 2rem;background-color:var(--color-primary);color:#fff;border-radius:50px;font-weight:700;transition:all .3s ease;border:2px solid transparent;text-transform:uppercase;letter-spacing:1px}.btn:hover{background-color:var(--color-secondary);border-color:var(--color-secondary);transform:translateY(-3px)}.card{background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(134,103,168,.1);padding:2rem}.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}.fade-in.visible{opacity:1;transform:translateY(0)}
+        /* HEADER & FOOTER */
+        .header{position:sticky;top:0;width:100%;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);z-index:1000}.header-container{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:var(--container-width);margin:auto;padding:0 1.5rem}.header__nav{display:block}.header__nav ul{display:flex;list-style:none;gap:2rem}.header__burger{display:none}
+        .footer{background-color:var(--color-bg-soft);padding:4rem 0 2rem;border-top:4px solid var(--color-accent-light)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem;max-width:var(--container-width);margin:auto;padding:0 1.5rem}.footer-bottom{text-align:center;border-top:1px solid #e0d8e9;padding-top:2rem}
+
+        /* PAGE-SPECIFIC STYLES: CONTACT */
+        .page-header { text-align: center; padding: 4rem 0; background-color: var(--color-bg-soft); }
+        .contact-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
+        #contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group { position: relative; }
+        .form-group label { font-weight: 700; margin-bottom: 0.5rem; display: block; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 2px solid var(--color-accent-light); border-radius: 8px; font-size: 1rem; transition: border-color var(--transition-speed); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        .error-message { color: #d9534f; font-size: 0.9rem; margin-top: 0.25rem; display: none; }
+        .form-group.error input, .form-group.error textarea { border-color: #d9534f; }
+        .form-group.success input, .form-group.success textarea { border-color: #5cb85c; }
+        #form-response { text-align: center; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; display: none; }
+        #form-response.success { background-color: var(--color-accent-light); color: var(--color-primary); }
+        #form-response.error { background-color: #f2dede; color: #a94442; }
+
+        .contact-info-card { background-color: var(--color-bg-soft); padding: 2rem; border-radius: 12px; }
+        .contact-info-card h3 { color: var(--color-secondary); }
+        .contact-info-card ul { list-style: none; }
+        .contact-info-card li { display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-info-card .icon { color: var(--color-primary); font-size: 1.5rem; }
+
+        @media (max-width: 992px){.header__nav{display:none}}
+        @media (max-width: 768px){.section{padding:3rem 0}.contact-layout{grid-template-columns:1fr}.header__burger{display:block}.footer-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <header class="header" id="page-header"></header>
+    <main>
+        <section class="page-header">
+            <div class="container fade-in">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you! Whether you have a question for our panel of experts, a suggestion for the site, or a story to share, this is the place to do it.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <div class="contact-layout">
+                    <div class="contact-form-container card">
+                        <h2>Send Us a Message</h2>
+                        <form id="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <div class="error-message">Name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message">A valid email is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                                <div class="error-message">Message cannot be empty.</div>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                        <div id="form-response"></div>
+                    </div>
+                    <aside class="contact-info-card">
+                        <h3>Contact Information</h3>
+                        <p>For general inquiries, you can also reach us directly:</p>
+                        <ul>
+                            <li>
+                                <span class="icon">📧</span>
+                                <div>
+                                    <strong>Email</strong><br>
+                                    <a href="mailto:bacseried@gmail.com">bacseried@gmail.com</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="icon">💬</span>
+                                <div>
+                                    <strong>WhatsApp</strong><br>
+                                    <a href="https://wa.me/22796380877" target="_blank" rel="noopener noreferrer">+227 96 38 08 77</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 style="margin-top: 2rem;">Site Map</h3>
+                        <p>Lost? Find your way around.</p>
+                        <ul>
+                            <li><span class="icon">🗺️</span><div><a href="index.html">Homepage</a><br><a href="cycle.html">The Cycle</a><br><a href="products.html">Products</a><br>...and more in the header!</div></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="page-footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CORE SCRIPT ---
+            const loadComponent=(id,url)=>{fetch(url).then(r=>r.text()).then(d=>{document.getElementById(id).innerHTML=d;if(id==='page-header')setupHeader();}).catch(e=>console.error(e))};const setupHeader=()=>{/* logic from other pages */};loadComponent('page-header','components/header.html');loadComponent('page-footer','components/footer.html');
+
+            // --- PAGE-SPECIFIC SCRIPT: CONTACT FORM VALIDATION ---
+            const form = document.getElementById('contact-form');
+            const formResponse = document.getElementById('form-response');
+            
+            if (form) {
+                const nameField = document.getElementById('name');
+                const emailField = document.getElementById('email');
+                const messageField = document.getElementById('message');
+
+                const setError = (field, message) => {
+                    const formGroup = field.parentElement;
+                    formGroup.classList.add('error');
+                    formGroup.classList.remove('success');
+                    const errorDiv = formGroup.querySelector('.error-message');
+                    errorDiv.innerText = message;
+                    errorDiv.style.display = 'block';
+                };
+
+                const setSuccess = (field) => {
+                    const formGroup = field.parentElement;
+                    formGroup.classList.remove('error');
+                    formGroup.classList.add('success');
+                    const errorDiv = formGroup.querySelector('.error-message');
+                    errorDiv.style.display = 'none';
+                };
+
+                const validateEmail = (email) => {
+                    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(String(email).toLowerCase());
+                };
+
+                const validateForm = () => {
+                    let isValid = true;
+                    if (nameField.value.trim() === '') {
+                        setError(nameField, 'Name is required.');
+                        isValid = false;
+                    } else {
+                        setSuccess(nameField);
+                    }
+
+                    if (emailField.value.trim() === '') {
+                        setError(emailField, 'Email is required.');
+                        isValid = false;
+                    } else if (!validateEmail(emailField.value.trim())) {
+                        setError(emailField, 'Please provide a valid email address.');
+                        isValid = false;
+                    } else {
+                        setSuccess(emailField);
+                    }
+
+                    if (messageField.value.trim() === '') {
+                        setError(messageField, 'Message cannot be empty.');
+                        isValid = false;
+                    } else {
+                        setSuccess(messageField);
+                    }
+
+                    return isValid;
+                }
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (validateForm()) {
+                        // Simulate form submission
+                        formResponse.className = 'success';
+                        formResponse.innerText = "Thank you! Your message has been sent successfully. We'll be in touch soon.";
+                        formResponse.style.display = 'block';
+                        form.reset();
+                        document.querySelectorAll('.form-group').forEach(fg => fg.classList.remove('success'));
+                    } else {
+                        formResponse.className = 'error';
+                        formResponse.innerText = "Please correct the errors before submitting.";
+                        formResponse.style.display = 'block';
+                    }
+                });
+            }
+
+            // Intersection Observer
+            const faders = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')));
+            faders.forEach(fader => observer.observe(fader));
+        });
+    </script>
+</body>
+</html>

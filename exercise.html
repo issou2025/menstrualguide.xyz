@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: Exercising with Your Cycle -->
+    <!-- Function: To provide fitness advice tailored to each menstrual phase, with an interactive weekly focus component. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Exercise & Fitness During Your Cycle | MenstrualGuide.xyz</title>
+    <meta name="description" content="Learn how to optimize your workouts for each phase of your menstrual cycle. Exercise tips for period fitness at MenstrualGuide.xyz">
+    <meta name="keywords" content="menstrual cycle exercise, period workouts, cycle syncing fitness, hormonal fitness">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.menstrualguide.xyz/exercise.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Exercise Guide for Your Cycle - MenstrualGuide.xyz">
+    <meta property="og:description" content="Sync your workouts with your menstrual cycle for optimal results and reduced discomfort.">
+    <meta property="og:url" content="https://www.menstrualguide.xyz/exercise.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="assets/css/shared.css">
+    
+    <!-- Page Specific Styles -->
+    <style>
+        /* CSS RESET & CORE STYLES (Assume same) */
+        :root{--color-primary:#8667a8;--color-secondary:#e6a4b4;--color-accent:#88a5d3;/*Calm Blue*/--color-accent-light:#e2eaf5;--color-text:#333;--color-text-light:#5f5f5f;--color-bg:#fff;--color-bg-soft:#f8f9fb;--font-heading:'Poppins',sans-serif;--font-body:'Lato',sans-serif;--container-width:1140px;--transition-speed:0.3s ease}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.7}h1,h2,h3,h4{font-family:var(--font-heading);color:var(--color-primary);line-height:1.2;margin-bottom:1rem;font-weight:600}p{margin-bottom:1rem;color:var(--color-text-light)}a{color:var(--color-secondary);text-decoration:none}
+        .container{max-width:var(--container-width);margin:auto;padding:0 1.5rem}.section{padding:5rem 0}.section-title{text-align:center;margin-bottom:4rem}.bg-soft{background-color:var(--color-bg-soft)}
+        .header,.footer{/* Assume same */}
+        
+        /* PAGE-SPECIFIC: EXERCISE PAGE */
+        .page-header h1 { color: var(--color-accent); }
+        .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .phase-card { background: white; border-radius: 16px; box-shadow: 0 4px 25px rgba(134,103,168,.08); padding: 2rem; border-left: 5px solid; }
+        .phase-card h3 { color: var(--color-primary); }
+        .phase-card--menstrual { border-color: #e6a4b4; } /* Pink */
+        .phase-card--follicular { border-color: #f7a399; } /* Coral */
+        .phase-card--ovulatory { border-color: #8cc695; } /* Green */
+        .phase-card--luteal { border-color: #88a5d3; } /* Blue */
+
+        /* Weekly Focus Interactive Element */
+        .weekly-focus { background-color: var(--color-bg-soft); padding: 3rem; border-radius: 16px; }
+        .focus-selector { text-align: center; margin-bottom: 2rem; }
+        .focus-selector label { font-weight: 700; margin-right: 1rem; }
+        .focus-selector select { padding: 0.75rem 1.5rem; border-radius: 50px; border: 2px solid var(--color-accent-light); font-size: 1rem; }
+        #focus-display { transition: all 0.5s ease-in-out; }
+        .focus-card { background: white; border-radius: 12px; padding: 2rem; text-align: center; max-width: 500px; margin: 0 auto; }
+        .focus-card h4 { color: var(--color-accent); font-size: 1.5rem; }
+        .focus-card .mantra { font-style: italic; font-size: 1.1rem; color: var(--color-primary); }
+
+        @media (max-width: 768px) { .phase-grid {grid-template-columns: 1fr;} .section{padding:3rem 0;} }
+
+        .workout-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .workout-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+        
+        .workout-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(124,95,153,0.15);
+        }
+        
+        .phase-exercise {
+            background: var(--color-bg-soft);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .exercise-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--color-divider);
+        }
+        
+        .exercise-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .exercise-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .intensity-meter {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .intensity-bar {
+            width: 3rem;
+            height: 0.5rem;
+            background: var(--color-divider);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .intensity-bar.active {
+            background: var(--color-accent);
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 1.5rem;
+            background: white;
+            padding: 0 0.5rem;
+        }
+        
+        .workout-schedule {
+            background: white;
+            border: 2px solid var(--color-primary-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .schedule-day {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-divider);
+        }
+        
+        .schedule-day:last-child {
+            border-bottom: none;
+        }
+        
+        .day-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            width: 100px;
+        }
+        
+        .day-activity {
+            flex: 1;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="page-header">
+        <div class="loading-placeholder">
+            <div class="loading-spinner"></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Exercise & Your Cycle</h1>
+            <p>Optimize your fitness routine by working with your hormones, not against them</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Introduction Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2>Cycle Syncing Your Workouts</h2>
+                    <p class="lead">Your energy, strength, and endurance fluctuate throughout your menstrual cycle. By adapting your exercise routine to these changes, you can maximize results and minimize discomfort.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h4>The Science</h4>
+                    <p>Hormonal fluctuations affect your metabolism, muscle recovery, body temperature, and energy levels. Understanding these changes helps you choose the right type and intensity of exercise for each phase.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase-Based Exercise Guide -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-4">Exercise by Cycle Phase</h2>
+                
+                <!-- Menstrual Phase -->
+                <div class="phase-exercise fade-in">
+                    <h3>🩸 Menstrual Phase (Days 1-5)</h3>
+                    <p><strong>Energy Level:</strong> Low to Moderate</p>
+                    <div class="intensity-meter">
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar"></div>
+                        <div class="intensity-bar"></div>
+                        <div class="intensity-bar"></div>
+                        <div class="intensity-bar"></div>
+                    </div>
+                    
+                    <div class="grid-2 mt-3">
+                        <div>
+                            <h4>Best Activities:</h4>
+                            <ul class="exercise-list">
+                                <li>Gentle yoga or stretching</li>
+                                <li>Walking or light cardio</li>
+                                <li>Pilates or low-impact exercises</li>
+                                <li>Swimming (if comfortable)</li>
+                                <li>Restorative activities</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Benefits:</h4>
+                            <ul class="exercise-list">
+                                <li>Reduces cramps through gentle movement</li>
+                                <li>Improves mood and energy</li>
+                                <li>Promotes blood flow</li>
+                                <li>Relieves bloating</li>
+                                <li>Supports recovery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <strong>Pro Tip:</strong> Listen to your body. If you feel energetic, light exercise is great. If you need rest, honor that too. This is a time for gentle movement, not pushing limits.
+                    </div>
+                </div>
+                
+                <!-- Follicular Phase -->
+                <div class="phase-exercise fade-in">
+                    <h3>🌱 Follicular Phase (Days 1-13)</h3>
+                    <p><strong>Energy Level:</strong> Rising</p>
+                    <div class="intensity-meter">
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar"></div>
+                        <div class="intensity-bar"></div>
+                    </div>
+                    
+                    <div class="grid-2 mt-3">
+                        <div>
+                            <h4>Best Activities:</h4>
+                            <ul class="exercise-list">
+                                <li>Cardio and HIIT workouts</li>
+                                <li>Running or cycling</li>
+                                <li>Dance or aerobics classes</li>
+                                <li>New workout challenges</li>
+                                <li>Group fitness activities</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Benefits:</h4>
+                            <ul class="exercise-list">
+                                <li>Take advantage of rising energy</li>
+                                <li>Build cardiovascular endurance</li>
+                                <li>Try new activities</li>
+                                <li>Boost metabolism</li>
+                                <li>Enhance mood and motivation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <strong>Pro Tip:</strong> This is the perfect time to try that new fitness class or push yourself a bit harder. Your body is primed for new challenges and faster recovery.
+                    </div>
+                </div>
+                
+                <!-- Ovulation Phase -->
+                <div class="phase-exercise fade-in">
+                    <h3>🌟 Ovulation Phase (Days 12-16)</h3>
+                    <p><strong>Energy Level:</strong> Peak</p>
+                    <div class="intensity-meter">
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                    </div>
+                    
+                    <div class="grid-2 mt-3">
+                        <div>
+                            <h4>Best Activities:</h4>
+                            <ul class="exercise-list">
+                                <li>High-intensity interval training</li>
+                                <li>Heavy strength training</li>
+                                <li>Competitive sports</li>
+                                <li>Boot camps or circuit training</li>
+                                <li>Personal records attempts</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Benefits:</h4>
+                            <ul class="exercise-list">
+                                <li>Maximum strength and endurance</li>
+                                <li>Faster recovery time</li>
+                                <li>Higher pain tolerance</li>
+                                <li>Peak performance potential</li>
+                                <li>Increased confidence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <strong>Pro Tip:</strong> You're at your strongest now! This is the ideal time for PR attempts, competitions, or your most challenging workouts. Just remember to warm up properly.
+                    </div>
+                </div>
+                
+                <!-- Luteal Phase -->
+                <div class="phase-exercise fade-in">
+                    <h3>🍂 Luteal Phase (Days 17-28)</h3>
+                    <p><strong>Energy Level:</strong> Declining</p>
+                    <div class="intensity-meter">
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar active"></div>
+                        <div class="intensity-bar"></div>
+                        <div class="intensity-bar"></div>
+                    </div>
+                    
+                    <div class="grid-2 mt-3">
+                        <div>
+                            <h4>Best Activities:</h4>
+                            <ul class="exercise-list">
+                                <li>Moderate strength training</li>
+                                <li>Steady-state cardio</li>
+                                <li>Yoga and flexibility work</li>
+                                <li>Pilates or barre</li>
+                                <li>Walking or hiking</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Benefits:</h4>
+                            <ul class="exercise-list">
+                                <li>Maintains fitness without overtaxing</li>
+                                <li>Reduces PMS symptoms</li>
+                                <li>Stabilizes mood</li>
+                                <li>Improves sleep quality</li>
+                                <li>Manages stress levels</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <strong>Pro Tip:</strong> Focus on consistency over intensity. Your body temperature is higher, so you might feel like you're working harder. Stay hydrated and don't judge your performance harshly.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Weekly Schedule -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-4">Sample Weekly Workout Schedule</h2>
+                
+                <div class="workout-schedule fade-in">
+                    <h3>Follicular/Ovulation Phase Schedule</h3>
+                    <div class="schedule-day">
+                        <span class="day-label">Monday:</span>
+                        <span class="day-activity">HIIT or Circuit Training (30-45 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Tuesday:</span>
+                        <span class="day-activity">Strength Training - Upper Body (45 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Wednesday:</span>
+                        <span class="day-activity">Running or Cycling (45-60 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Thursday:</span>
+                        <span class="day-activity">Strength Training - Lower Body (45 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Friday:</span>
+                        <span class="day-activity">Dance Class or Sports (60 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Weekend:</span>
+                        <span class="day-activity">Active Recovery - Hiking, Swimming, or Yoga</span>
+                    </div>
+                </div>
+                
+                <div class="workout-schedule fade-in">
+                    <h3>Menstrual/Luteal Phase Schedule</h3>
+                    <div class="schedule-day">
+                        <span class="day-label">Monday:</span>
+                        <span class="day-activity">Gentle Yoga or Stretching (30 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Tuesday:</span>
+                        <span class="day-activity">Walking or Light Cardio (30-45 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Wednesday:</span>
+                        <span class="day-activity">Pilates or Light Strength (30 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Thursday:</span>
+                        <span class="day-activity">Restorative Yoga (45 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Friday:</span>
+                        <span class="day-activity">Swimming or Water Aerobics (30 min)</span>
+                    </div>
+                    <div class="schedule-day">
+                        <span class="day-label">Weekend:</span>
+                        <span class="day-activity">Rest or Gentle Movement as Desired</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-4">Exercise Tips for Every Phase</h2>
+                
+                <div class="grid-3">
+                    <div class="workout-card fade-in">
+                        <h3>🧘‍♀️ Listen to Your Body</h3>
+                        <p>Your cycle is a guide, not a strict rule. Some months you might feel stronger during your period or more tired during ovulation. Always honor what your body is telling you.</p>
+                    </div>
+                    
+                    <div class="workout-card fade-in">
+                        <h3>💧 Stay Hydrated</h3>
+                        <p>Hormonal changes affect fluid retention and body temperature. Increase water intake, especially during the luteal phase when body temperature is naturally higher.</p>
+                    </div>
+                    
+                    <div class="workout-card fade-in">
+                        <h3>🍎 Fuel Properly</h3>
+                        <p>Match your nutrition to your activity level. You may need more carbs during high-intensity phases and more protein for recovery during lower-energy times.</p>
+                    </div>
+                    
+                    <div class="workout-card fade-in">
+                        <h3>😴 Prioritize Recovery</h3>
+                        <p>Sleep needs may increase during certain phases. Allow for extra rest, especially during menstruation and the late luteal phase.</p>
+                    </div>
+                    
+                    <div class="workout-card fade-in">
+                        <h3>📊 Track Progress</h3>
+                        <p>Keep a fitness journal noting how you feel during different phases. This helps you identify patterns and optimize your routine over time.</p>
+                    </div>
+                    
+                    <div class="workout-card fade-in">
+                        <h3>🎯 Set Phase Goals</h3>
+                        <p>Instead of comparing week to week, compare similar phases. Your follicular phase performance to your next follicular phase is a better measure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="content-section bg-soft">
+            <div class="container text-center">
+                <h2>Ready to Sync Your Fitness?</h2>
+                <p class="lead mb-4">Start tracking your cycle and notice how your energy changes. Your body has wisdom - learn to work with it!</p>
+                <div>
+                    <a href="cycle.html" class="btn btn-primary">Learn About Your Cycle</a>
+                    <a href="diet.html" class="btn btn-outline">Nutrition Guide</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="page-footer">
+        <div class="loading-placeholder">
+            <div class="loading-spinner"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Load components
+        async function loadComponent(id, url) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                document.getElementById(id).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${url}:`, error);
+            }
+        }
+
+        // Load header and footer
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('page-header', 'components/header.html');
+            loadComponent('page-footer', 'components/footer.html');
+            
+            // Initialize fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

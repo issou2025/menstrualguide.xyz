@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: First Period for Teens -->
+    <!-- Function: To provide a safe, reassuring guide for teens experiencing their first period, with a checklist and anonymous question form. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your First Period (Menarche): A Guide for Teens | Menstrual Guide</title>
+    <meta name="description" content="Getting your first period? Our friendly guide for teens and parents covers everything you need to know, from what to expect to how to use a pad and what to pack in your kit.">
+    <link rel="canonical" href="https://www.yourdomain.com/first-period.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & CORE STYLES */
+        :root {
+            --color-primary: #8667a8; --color-secondary: #e6a4b4; --color-accent: #f7a399; /* Softer accent */ --color-accent-light: #fdece3; --color-text: #333333; --color-text-light: #555555; --color-bg: #ffffff; --color-bg-soft: #fff9f5; --font-heading: 'Poppins', sans-serif; --font-body: 'Lato', sans-serif; --container-width: 1140px; --transition-speed: 0.3s ease;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.7}h1,h2,h3,h4{font-family:var(--font-heading);color:var(--color-primary);line-height:1.2;margin-bottom:1rem;font-weight:600}h1{font-size:clamp(2.5rem,5vw,3.5rem)}h2{font-size:clamp(2rem,4vw,2.5rem)}p{margin-bottom:1rem;color:var(--color-text-light)}a{color:var(--color-secondary);text-decoration:none}
+        .container{max-width:var(--container-width);margin:auto;padding:0 1.5rem}.section{padding:5rem 0}.section-title{text-align:center;margin-bottom:3rem}.bg-soft{background-color:var(--color-bg-soft)}.btn{display:inline-block;padding:.85rem 2rem;background-color:var(--color-primary);color:#fff;border-radius:50px;font-weight:700;transition:all var(--transition-speed);border:2px solid transparent;text-transform:uppercase;letter-spacing:1px}.btn:hover{background-color:var(--color-secondary);border-color:var(--color-secondary);transform:translateY(-3px)}.card{background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(134,103,168,.1);padding:2rem}.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}.fade-in.visible{opacity:1;transform:translateY(0)}
+        /* HEADER & FOOTER */
+        .header{position:sticky;top:0;width:100%;background-color:rgba(255,255,255,.9);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.05)}.header-container{display:flex;align-items:center;justify-content:space-between;height:80px}.header__logo{display:flex;align-items:center;gap:.75rem;font-family:var(--font-heading);color:var(--color-primary);font-size:1.25rem;font-weight:700}.header__nav{display:block}.header__nav ul{display:flex;list-style:none;gap:2rem}.header__nav a{font-weight:700;color:var(--color-text-light);position:relative;padding:.25rem 0}.header__nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--color-secondary);transition:width var(--transition-speed)}.header__nav a:hover::after,.header__nav a.active::after{width:100%}.header__burger{display:none}
+        .footer{background-color:var(--color-bg-soft);padding:4rem 0 2rem;border-top:4px solid var(--color-accent-light)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem}.footer-bottom{text-align:center;border-top:1px solid #e0d8e9;padding-top:2rem}
+
+        /* PAGE-SPECIFIC STYLES */
+        .page-header{text-align:center;padding:4rem 0;}.page-header img{max-width:300px;margin:1rem auto;}
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; counter-reset: steps-counter; }
+        .step-card { position: relative; padding-top: 3rem; }
+        .step-card::before { content: counter(steps-counter); counter-increment: steps-counter; position: absolute; top: 1.5rem; left: 1.5rem; width: 40px; height: 40px; background: var(--color-accent-light); color: var(--color-accent); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+        
+        .kit-checklist { background-color: white; padding: 2.5rem; border: 2px dashed var(--color-accent); border-radius: 12px; }
+        .kit-checklist ul { list-style: '💖'; padding-left: 1.5rem; columns: 2; }
+        .kit-checklist li { padding-left: 0.75rem; margin-bottom: 0.5rem; }
+
+        #ask-form-container { max-width: 600px; margin: 0 auto; text-align: center; }
+        #ask-form textarea { width: 100%; min-height: 120px; padding: 1rem; border: 2px solid var(--color-accent-light); border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; }
+        #ask-form-container .btn { background-color: var(--color-accent); border-color: var(--color-accent); }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px){.header__nav{display:none}}
+        @media (max-width: 768px){.section{padding:3rem 0}.header__nav.active{display:block;position:fixed;top:80px;left:0;width:100%;height:calc(100vh - 80px);background:#fff;padding:2rem}.header__burger{display:block}.footer-grid{grid-template-columns:1fr}.kit-checklist ul{columns:1}}
+    </style>
+</head>
+<body>
+    <header class="header" id="page-header"></header>
+    <main>
+        <section class="page-header bg-soft">
+            <div class="container fade-in">
+                <h1>Welcome to the Club!</h1>
+                <p>Getting your first period is a big deal, and it's totally normal to have a million questions. Don't worry, we've got you. This is your friendly guide to everything you need to know.</p>
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/happy-women-s-day-4822216-4014902.png" alt="A colorful illustration of three happy, diverse young women celebrating together.">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">What To Expect</h2>
+                <div class="steps-grid">
+                    <div class="card step-card"><h3>It's Just Blood</h3><p>Period blood isn't like a cut. It can be red, brown, or pink, and might be a little clumpy. This is all normal! You'll only lose a few tablespoons over several days.</p></div>
+                    <div class="card step-card"><h3>Mild Cramps</h3><p>You might feel a dull ache in your lower belly. This is your uterus working. A warm heating pad or a gentle walk can help a lot.</p></div>
+                    <div class="card step-card"><h3>The Flow</h3><p>Your first few periods might be super light and irregular. It can take your body a year or two to find a regular rhythm. That's okay!</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container fade-in">
+                <h2 class="section-title">How to Use a Pad</h2>
+                <div class="steps-grid">
+                    <div class="card step-card"><h3>Unwrap It</h3><p>Take the pad out of its wrapper. The wrapper can be used to dispose of your old pad later.</p></div>
+                    <div class="card step-card"><h3>Stick It On</h3><p>Peel off the long paper strip on the back and press the sticky side firmly onto the inside of your underwear.</p></div>
+                    <div class="card step-card"><h3>Fold the Wings</h3><p>If your pad has "wings," peel the paper off them and fold them around the outside of your underwear to hold it in place.</p></div>
+                    <div class="card step-card"><h3>Change It</h3><p>Change your pad every 4-6 hours, or when it feels wet, to stay fresh and prevent leaks.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">Your First Period Kit</h2>
+                <div class="kit-checklist">
+                    <p>Keep a small, discreet pouch in your school bag with these essentials, so you're always prepared!</p>
+                    <ul>
+                        <li>2-3 pads or tampons</li>
+                        <li>A spare pair of underwear</li>
+                        <li>A small pack of wet wipes</li>
+                        <li>A small pain reliever (if parents approve)</li>
+                        <li>A little treat, like a piece of chocolate!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">Recommended Starter Products</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Here are some gentle, teen-friendly products perfect for your first periods:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div class="card" style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: var(--color-accent-light); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            🌸
+                        </div>
+                        <h3 style="color: var(--color-accent);">Teen Period Underwear</h3>
+                        <p>Super comfortable and looks just like regular underwear! Perfect for school days - no worries about leaks.</p>
+                        <a href="https://amzn.to/3TqFkCr" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--color-accent); margin-top: 1rem;">
+                            Check It Out →
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: var(--color-accent-light); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            🌿
+                        </div>
+                        <h3 style="color: var(--color-accent);">Gentle Wipes</h3>
+                        <p>Biodegradable and fragrance-free wipes to help you feel fresh throughout the day. Great for your period kit!</p>
+                        <a href="https://amzn.to/3Ig5qpC" target="_blank" rel="noopener noreferrer" class="btn" style="background: var(--color-accent); margin-top: 1rem;">
+                            Check It Out →
+                        </a>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-text-light);">
+                    <em>Remember: Talk to a parent or guardian before purchasing any products. As an Amazon Associate, we may earn from qualifying purchases.</em>
+                </p>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container fade-in">
+                <h2 class="section-title">Got a Question? Ask Away!</h2>
+                <div id="ask-form-container">
+                    <p>No question is silly. Ask us anything anonymously. We'll post answers on our main <a href="faq.html">FAQ page</a>.</p>
+                    <form id="ask-form">
+                        <textarea id="question-text" placeholder="Type your question here..." aria-label="Your anonymous question" required></textarea>
+                        <button type="submit" class="btn">Submit Question</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="page-footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CORE SCRIPT ---
+            const loadComponent = (id, url) => fetch(url).then(r => r.text()).then(d => { document.getElementById(id).innerHTML = d; if(id==='page-header') setupHeader(); }).catch(e => console.error(e));
+            const setupHeader = () => { /* Logic from previous pages */ };
+            loadComponent('page-header', 'components/header.html'); loadComponent('page-footer', 'components/footer.html');
+
+            // --- PAGE-SPECIFIC SCRIPT: ANONYMOUS QUESTION FORM ---
+            const formContainer = document.getElementById('ask-form-container');
+            const askForm = document.getElementById('ask-form');
+
+            if (askForm) {
+                askForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const questionText = document.getElementById('question-text').value;
+                    if (questionText.trim() === '') {
+                        alert('Please type a question!');
+                        return;
+                    }
+                    
+                    formContainer.innerHTML = `
+                        <div class="card" style="text-align: center;">
+                            <h3>Thank You!</h3>
+                            <p>Your question has been sent. We'll do our best to answer it on our main FAQ page soon.</p>
+                            <p>You're doing great, and it's awesome that you're curious about your body!</p>
+                        </div>
+                    `;
+                });
+            }
+
+            // Intersection Observer
+            const faders = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')));
+            faders.forEach(fader => observer.observe(fader));
+        });
+    </script>
+</body>
+</html>

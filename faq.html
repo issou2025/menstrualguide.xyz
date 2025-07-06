@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: FAQ (Premium with 10 Questions) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menstrual Health FAQ: Your Questions Answered | Menstrual Guide</title>
+    <meta name="description" content="Find answers to frequently asked questions about periods, menstrual cycles, PMS, hygiene, and products. Search our comprehensive, expert-verified FAQ.">
+    <link rel="canonical" href="https://www.yourdomain.com/faq.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* === PREMIUM DESIGN SYSTEM (avec CSS du header corrigé) === */
+        :root {
+            --color-primary: #7c5f99; --color-secondary: #f2b5c7; --color-accent: #b2d8d8;
+            --color-bg-gradient: linear-gradient(135deg, #fdf6f8 0%, #f7f5fb 100%);
+            --color-btn-gradient: linear-gradient(135deg, #8e73a8 0%, #7c5f99 100%);
+            --color-text: #4a4a4a; --color-text-light: #6c6c6c; --color-bg: #ffffff; --color-bg-soft: #fbf9fe;
+            --font-heading: 'Playfair Display', serif; --font-body: 'Poppins', sans-serif;
+            --container-width: 1140px; --transition-speed: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--color-text); background-color: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary); line-height: 1.2; font-weight: 700; }
+        h1 { font-size: clamp(3rem, 6vw, 4.5rem); letter-spacing: -1px; }
+        h2 { font-size: clamp(2.5rem, 5vw, 3rem); }
+        p { margin-bottom: 1rem; color: var(--color-text-light); }
+        a { color: var(--color-secondary); text-decoration: none; }
+        .container { max-width: var(--container-width); margin: auto; padding: 0 1.5rem; }
+        .section { padding: 6rem 0; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .bg-soft { background: var(--color-bg-gradient); }
+        .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: var(--color-btn-gradient); color: white; border-radius: 50px; font-weight: 600; font-family: var(--font-body); transition: all var(--transition-speed); border: none; box-shadow: 0 4px 15px rgba(124, 95, 153, 0.2); }
+        .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 25px rgba(124, 95, 153, 0.3); }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* === HEADER & FOOTER (CORRIGÉ) === */
+        .header { position: sticky; top: 0; width:100%; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .header-container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .header__logo { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-body); color: var(--color-primary); font-size: 1.25rem; font-weight: 600; }
+        .header__logo-img { height: 50px; width: auto; border-radius: 0; }
+        .header__nav { display: block; } .header__nav ul { display: flex; list-style:none; gap: 2rem; } .header__nav a { font-weight: 600; font-size:0.95rem; color: var(--color-text); position: relative; padding: 0.25rem 0; }
+        .header__nav a::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--color-secondary); transition: width var(--transition-speed); }
+        .header__nav a:hover, .header__nav a.active { color: var(--color-primary); }
+        .header__nav a:hover::after, .header__nav a.active::after { width: 100%; }
+        .header__burger { display: none; }
+        .footer { background-color: #f3eef7; color: var(--color-text-light); padding: 5rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #e0d8e9; padding-top: 2rem; }
+
+        /* === PAGE-SPECIFIC: FAQ (PREMIUM) === */
+        .page-header { text-align: center; padding: 5rem 0; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-search-box { margin-bottom: 3rem; position: relative; }
+        .faq-search-box input { width: 100%; padding: 1rem 1.5rem 1rem 4rem; font-size: 1.1rem; border: 1px solid #e0d8e9; border-radius: 50px; font-family: var(--font-body); transition: all var(--transition-speed); }
+        .faq-search-box input:focus { outline: none; border-color: var(--color-secondary); box-shadow: 0 0 0 3px rgba(242, 181, 199, 0.4); }
+        .faq-search-box::before { content: '🔍'; position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); font-size: 1.5rem; opacity: 0.5; }
+        .faq-accordion .faq-item { border-bottom: 1px solid #f3eef7; }
+        .faq-item.hidden { display: none; }
+        .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1.75rem 1rem; font-family: var(--font-body); font-size: 1.2rem; font-weight: 600; color: var(--color-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--color-secondary); transition: transform var(--transition-speed); }
+        .faq-question[aria-expanded="true"]::after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .faq-answer p { padding: 0 1rem 1.75rem 1rem; margin: 0; line-height: 1.9; }
+        #no-results { text-align: center; padding: 3rem; color: var(--color-text-light); }
+        .cta-section { text-align: center; background: var(--color-bg-gradient); padding: 5rem 1.5rem; border-radius: 20px; margin-top: 5rem; }
+        .cta-section h2 { color: var(--color-primary); }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .header__nav { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .section { padding: 4rem 0; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .header__burger { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="page-header"></header>
+
+    <main>
+        <section class="page-header bg-soft">
+            <div class="container fade-in">
+                <h1>Questions? We have answers.</h1>
+                <p>Curiosity is a great thing! Here are answers to some of the most common questions we hear. Can't find what you're looking for? Use the search bar below.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in faq-container">
+                <div class="faq-search-box">
+                    <input type="search" id="faq-search" placeholder="Search for keywords like 'cramps', 'cup', 'irregular'..." aria-label="Search FAQ">
+                </div>
+                <div class="faq-accordion" id="faq-accordion">
+                    <!-- Les questions et réponses seront générées ici par le JS -->
+                </div>
+                <p id="no-results" class="hidden">No questions found matching your search.</p>
+                <div class="cta-section">
+                    <h2>Still have questions?</h2>
+                    <p>Our community and experts are here to help. Submit your question and we'll get back to you.</p>
+                    <a href="contact.html" class="btn">Ask an Expert</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="page-footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CORE SCRIPT ---
+            const loadComponent=(id,url)=>{fetch(url).then(r=>r.ok?r.text():Promise.reject(r.statusText)).then(d=>{document.getElementById(id).innerHTML=d;if(id==='page-header')setupHeader()}).catch(e=>console.error(`Failed to load ${id}: ${e}`))};
+            const setupHeader = () => {
+                const burger = document.getElementById('burger-menu'), nav = document.querySelector('.header__nav');
+                if (burger && nav) {
+                    burger.addEventListener('click', () => { document.body.classList.toggle('nav-open'); burger.setAttribute('aria-expanded', document.body.classList.contains('nav-open')); });
+                }
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                document.querySelectorAll('#main-nav a').forEach(l => { if (l.getAttribute('href') === currentPage) l.classList.add('active'); });
+            };
+            loadComponent('page-header', 'components/header.html');
+            loadComponent('page-footer', 'components/footer.html');
+
+            // --- PAGE-SPECIFIC SCRIPT: FAQ avec 10 Questions ---
+            const faqData = [
+                // Questions de base
+                { q: "Is it normal for my cycle to be irregular?", a: "Yes, especially in the first few years after your first period. A 'normal' cycle can range from 21-35 days. Stress, diet, exercise, and travel can also cause temporary irregularities. If your cycle is consistently outside this range or if you miss more than three in a row, it's a good idea to check in with a doctor." },
+                { q: "How do I deal with period cramps?", a: "Heat is your best friend! A heating pad or a warm bath can relax the uterine muscles. Over-the-counter pain relievers like ibuprofen can also be very effective. Gentle exercise, like yoga or walking, and staying hydrated can also help significantly." },
+                { q: "Why do I get food cravings before my period?", a: "Hormonal fluctuations are the main culprit. A drop in serotonin can make you crave carbs and sugary foods, as they provide a quick mood boost. A rise in cortisol (the stress hormone) can also increase appetite. Listening to your body is okay, but try to reach for complex carbs and nutrient-dense snacks." },
+                // Questions sur les produits
+                { q: "What's the difference between a menstrual cup and a disc?", a: "A menstrual cup sits in the vaginal canal and stays in place with suction. A menstrual disc is wider and softer, sitting higher up in the vaginal fornix, right below the cervix, held in place by your pubic bone. Discs are often preferred by people with a low cervix and can sometimes be worn during penetrative sex." },
+                { q: "Can I go swimming on my period?", a: "Absolutely! Water pressure temporarily stops the flow, but for hygiene and peace of mind, it's best to use an internal product like a tampon or a menstrual cup/disc. Pads will just absorb water and become ineffective." },
+                { q: "How often should I change my tampon or pad?", a: "You should change a tampon every 4 to 8 hours. Never leave it in for longer than 8 hours due to the risk of Toxic Shock Syndrome (TSS). Pads should be changed every 3 to 6 hours, or more often if your flow is heavy, to maintain hygiene and prevent leaks." },
+                // Questions sur la santé
+                { q: "What is Toxic Shock Syndrome (TSS)?", a: "TSS is a rare but serious bacterial infection. It has been linked to high-absorbency tampons. To minimize risk, always use the lowest absorbency tampon for your flow, change it regularly (every 4-8 hours), and alternate with pads. Menstrual cups have a much lower associated risk." },
+                { q: "How much blood loss is 'too much'?", a: "Heavy bleeding (menorrhagia) is defined as losing more than 80ml (about 1/3 cup) of blood per cycle, or having a period that lasts longer than 7 days. If you're soaking through a pad or tampon every hour for several hours, or passing clots larger than a quarter, you should consult a doctor." },
+                { q: "What does the color of my period blood mean?", a: "Period blood color can vary. Bright red is fresh blood, common at the start of your period. Dark red or brown is older blood, often seen at the beginning or end. Pink usually means light flow or blood mixed with cervical fluid. While variations are normal, see a doctor if you see greyish or unusually watery discharge." },
+                { q: "Why do I get tired during my period?", a: "Fatigue is very common. It can be caused by hormonal changes, particularly the drop in estrogen and progesterone. Iron levels can also dip due to blood loss, contributing to tiredness. Prioritizing sleep, staying hydrated, and eating iron-rich foods can help combat this." }
+            ];
+
+            const accordionContainer = document.getElementById('faq-accordion');
+            const searchInput = document.getElementById('faq-search');
+            const noResults = document.getElementById('no-results');
+
+            function renderFAQs() {
+                const fragment = document.createDocumentFragment();
+                faqData.forEach((faq, index) => {
+                    const faqItem = document.createElement('div');
+                    faqItem.className = 'faq-item';
+                    faqItem.innerHTML = `<button class="faq-question" aria-expanded="false" aria-controls="faq${index}">${faq.q}</button><div class="faq-answer" id="faq${index}" role="region"><p>${faq.a}</p></div>`;
+                    fragment.appendChild(faqItem);
+                });
+                accordionContainer.innerHTML = '';
+                accordionContainer.appendChild(fragment);
+            }
+
+            function filterFAQs() {
+                const filter = searchInput.value.toLowerCase();
+                const items = accordionContainer.querySelectorAll('.faq-item');
+                let itemsFound = 0;
+                
+                items.forEach(item => {
+                    const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+                    if (questionText.includes(filter)) {
+                        item.classList.remove('hidden');
+                        itemsFound++;
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+                noResults.classList.toggle('hidden', itemsFound > 0);
+            }
+
+            if (accordionContainer && searchInput) {
+                renderFAQs();
+                searchInput.addEventListener('input', filterFAQs);
+                accordionContainer.addEventListener('click', (e) => {
+                    const questionButton = e.target.closest('.faq-question');
+                    if (!questionButton) return;
+                    const isExpanded = questionButton.getAttribute('aria-expanded') === 'true';
+                    questionButton.setAttribute('aria-expanded', !isExpanded);
+                    const answer = questionButton.nextElementSibling;
+                    if (answer) { answer.style.maxHeight = isExpanded ? null : answer.scrollHeight + "px"; }
+                });
+            }
+            
+            const faders = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((e,o)=>{e.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');o.unobserve(entry.target);}});},{threshold:0.1});
+            faders.forEach(f => { if(f) observer.observe(f); });
+        });
+    </script>
+</body>
+</html>

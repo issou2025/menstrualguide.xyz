@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Menstrual Guide - Complete Period Health Education | MenstrualGuide.xyz</title>
+    <meta name="description" content="Your trusted resource for menstrual health education. Learn about periods, cycles, products, and wellness. Evidence-based information for all ages at MenstrualGuide.xyz">
+    <meta name="keywords" content="menstrual health, period guide, menstruation education, menstrual cycle, period products, PMS, PMDD, menstrual hygiene">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.menstrualguide.xyz/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.menstrualguide.xyz/">
+    <meta property="og:title" content="Menstrual Guide - Complete Period Health Education">
+    <meta property="og:description" content="Your trusted resource for menstrual health education. Learn about periods, cycles, products, and wellness.">
+    <meta property="og:image" content="https://www.menstrualguide.xyz/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="MenstrualGuide.xyz">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.menstrualguide.xyz/">
+    <meta property="twitter:title" content="Menstrual Guide - Complete Period Health Education">
+    <meta property="twitter:description" content="Your trusted resource for menstrual health education. Learn about periods, cycles, products, and wellness.">
+    <meta property="twitter:image" content="https://www.menstrualguide.xyz/assets/images/twitter-card.jpg">
+    
+    <!-- Mobile App Meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#7c5f99">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "MenstrualGuide.xyz",
+        "url": "https://www.menstrualguide.xyz",
+        "logo": "https://www.menstrualguide.xyz/assets/images/logo.png",
+        "description": "Comprehensive menstrual health education platform providing evidence-based information about periods, cycles, and wellness.",
+        "sameAs": [
+            "https://www.facebook.com/menstrualguide",
+            "https://www.twitter.com/menstrualguide",
+            "https://www.instagram.com/menstrualguide"
+        ]
+    }
+    </script>
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="assets/css/shared.css">
+    
+    <style>
+        /* Mobile-First Approach */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Improved Mobile Touch Targets */
+        a, button {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Mobile Menu Improvements */
+        @media (max-width: 992px) {
+            .header__nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                z-index: 999;
+            }
+            
+            .header__nav.active {
+                transform: translateX(0);
+            }
+            
+            .header__nav ul {
+                flex-direction: column;
+                padding: 2rem 1.5rem;
+            }
+            
+            .header__nav a {
+                padding: 1rem 0;
+                font-size: 1.1rem;
+            }
+            
+            body.menu-open {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23fdfbf9' fill-opacity='1' d='M0,20 C480,80 960,80 1440,20 L1440,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 50vh;
+                padding: 3rem 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .guides-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .guide-card {
+                padding: 1.5rem;
+            }
+            
+            .book-card {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            /* Better spacing on mobile */
+            .content-section {
+                padding: 3rem 0;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            /* Improve readability on small screens */
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+
+        /* Touch-friendly cards */
+        .guide-card, .book-card {
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Smooth scrolling for iOS */
+        .testimonials-slider {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Guide Cards */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(124,95,153,0.15);
+        }
+
+        .guide-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .guide-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .guide-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guide-card p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23fdfbf9' fill-opacity='1' d='M0,80 C480,20 960,20 1440,80 L1440,0 L0,0 Z'%3E%3C/path%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .newsletter-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-section p {
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--color-primary);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonial-card .stars {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card cite {
+            color: var(--color-text-light);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .slider-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-divider);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dots .dot.active {
+            background: var(--color-primary);
+        }
+
+        /* Book Cards */
+        .book-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124,95,153,0.05) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(124,95,153,0.2);
+        }
+
+        .book-card:hover::before {
+            transform: rotate(45deg) scale(1.2);
+        }
+
+        .book-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card:nth-child(2) .book-icon {
+            background: var(--gradient-secondary);
+        }
+
+        .book-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .book-card:hover .book-icon::before {
+            transform: translateX(100%);
+        }
+
+        .book-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .book-card p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .book-card .btn {
+            margin-top: auto;
+        }
+
+        .text-light {
+            color: var(--color-text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-card {
+                padding: 2rem;
+            }
+
+            .book-icon {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        .hero {
+            min-height: 40vh;
+            padding: 2.5rem 0 2rem 0;
+        }
+        .hero h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        .hero__description {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+        .hero__cta .btn {
+            font-size: 1rem;
+            padding: 0.7rem 1.5rem;
+        }
+        .hero__image img {
+            max-width: 350px;
+            height: auto;
+        }
+
+        .quick-links-grid {
+            margin: 1.5rem 0 2.5rem 0;
+            gap: 1rem !important;
+        }
+        .quick-links-grid .btn {
+            padding: 0.7rem 1.2rem;
+            font-size: 0.98rem;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(124,95,153,0.07);
+            background: #fff;
+            color: var(--color-primary);
+            border: 1.5px solid var(--color-primary);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .quick-links-grid .btn:hover, .quick-links-grid .btn:focus {
+            background: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(124,95,153,0.13);
+        }
+
+        .guides-section {
+            margin-top: 2rem;
+        }
+        .guides-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.2rem;
+        }
+        .guide-card {
+            padding: 1.2rem 1rem;
+            border-radius: 14px;
+            min-height: 260px;
+            box-shadow: 0 2px 10px rgba(124,95,153,0.07);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .guide-card:hover, .guide-card:focus-within {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(124,95,153,0.13);
+            z-index: 2;
+        }
+        .guide-card__icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.7rem auto;
+            font-size: 1.7rem;
+        }
+        .guide-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .guide-card p {
+            font-size: 0.98rem;
+            margin-bottom: 0.7rem;
+        }
+        .guide-card__link {
+            font-size: 0.95rem;
+            color: var(--color-secondary);
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .hero__image img { max-width: 220px; }
+            .guides-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000;background:#fff;color:#7c5f99;padding:8px 16px;border-radius:8px;transition:left 0.3s;">Skip to main content</a>
+    <!-- Header with loading placeholder -->
+    <header class="header" id="page-header">
+        <div class="loading-placeholder">
+            <div class="loading-spinner"></div>
+        </div>
+    </header>
+
+    <!-- Animated Gradient Background -->
+    <div class="animated-bg" aria-hidden="true" style="position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;pointer-events:none;background:linear-gradient(120deg,#e89b93 0%,#7c5f99 100%);background-size:200% 200%;animation:bgMove 18s ease-in-out infinite alternate;"></div>
+    <style>@keyframes bgMove{0%{background-position:0% 50%}100%{background-position:100% 50%}}</style>
+
+    <main id="main-content" tabindex="-1">
+        <!-- Decorative wave illustration for hero background -->
+        <svg class="wave-bg" height="90" viewBox="0 0 1440 90"><path fill="#7c5f99" fill-opacity="0.1" d="M0,32L60,53.3C120,75,240,117,360,133.3C480,149,600,139,720,117.3C840,96,960,64,1080,64C1200,64,1320,96,1380,112L1440,128V0H1380C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0H0Z"></path></svg>
+
+        <section class="hero fade-in">
+            <div class="container">
+                <div class="hero__content">
+                    <p class="hero__subtitle">Your Cycle, Understood</p>
+                    <h1><span class="animated-text">A modern guide to menstrual wellness.</span></h1>
+                    <p class="hero__description">Finally, a beautiful, inclusive, and science-backed space to understand your body. We're here to demystify your period and empower you with knowledge.</p>
+                    <div class="hero__cta">
+                        <a href="#guides" class="btn" aria-label="Start Your Journey with Menstrual Guide">Start Your Journey</a>
+                    </div>
+                    <div class="hero__image fade-in">
+                        <img src="assets/images/hero-illustration.svg" alt="Menstrual wellness illustration" width="600" height="400" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wavy Divider -->
+        <div class="section-divider wave-divider" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="#fdfbf9" fill-opacity="1" d="M0,64L80,74.7C160,85,320,107,480,106.7C640,107,800,85,960,80C1120,75,1280,85,1360,90.7L1440,96L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path></svg>
+        </div>
+
+        <!-- Quick Links Section -->
+        <section class="section bg-soft fade-in" aria-label="Quick Links" id="guides">
+            <div class="container">
+                <div class="quick-links-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;justify-items:center;">
+                    <a href="first-period.html" class="btn btn-outline" style="font-size:1rem;">First Period?</a>
+                    <a href="products.html" class="btn btn-outline" style="font-size:1rem;">Compare Products</a>
+                    <a href="faq.html" class="btn btn-outline" style="font-size:1rem;">Common Questions</a>
+                    <a href="contact.html" class="btn btn-outline" style="font-size:1rem;">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Product Banner -->
+        <section style="background: var(--gradient-secondary); padding: 1.5rem 0;">
+            <div class="container">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div style="color: white;">
+                        <strong style="font-size: 1.1rem;">🌟 Featured Product:</strong>
+                        <span>Premium Menstrual Cup - Eco-friendly & comfortable protection</span>
+                    </div>
+                    <a href="https://amzn.to/3IbXLZ9" target="_blank" rel="noopener noreferrer" class="btn" style="background: white; color: var(--color-secondary); padding: 0.6rem 1.5rem; font-size: 0.95rem;">
+                        Shop Now →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section guides-section">
+            <div class="container">
+                <div class="section__header fade-up">
+                    <span class="section__badge">Explore Topics</span>
+                    <h2 class="section-title">Your Journey Starts Here</h2>
+                    <p class="section__description">Discover comprehensive guides tailored to your needs. Each topic is carefully curated to provide you with accurate, accessible information.</p>
+                </div>
+                <!-- Start Here Row -->
+                <div class="guides-row fade-in" aria-label="Start Here">
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 1;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a4 4 0 0 0 8 0V3"/><path d="M12 21v-4"/><path d="M12 17a4 4 0 0 0-4-4H4a4 4 0 0 0 0 8h4a4 4 0 0 0 4-4Z"/><path d="M12 17a4 4 0 0 1 4-4h4a4 4 0 0 1 0 8h-4a4 4 0 0 1-4-4Z"/></svg></div>
+                        <h3>First Period Guide</h3>
+                        <p>Everything you need to know about your first period, from what to expect to how to prepare.</p>
+                        <a href="first-period.html" class="guide-card__link">Get Started</a>
+                    </article>
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 2;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="m12 14-4 4 4 4"/><path d="m16 14 4 4-4 4"/></svg></div>
+                        <h3>Understanding Your Cycle</h3>
+                        <p>Learn about the four phases of your menstrual cycle and how they affect your body and well-being.</p>
+                        <a href="cycle.html" class="guide-card__link">Explore Phases</a>
+                    </article>
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 3;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="m21 8-3-5.2"/><path d="m3 8 3-5.2"/><path d="m12 18 3 5.2"/><path d="m12 18-3 5.2"/><path d="m21 16-3 5.2"/><path d="m3 16 3 5.2"/><path d="M21 16H3"/><path d="M12 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M7 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M17 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg></div>
+                        <h3>Product Guide</h3>
+                        <p>Compare different menstrual products and find the best options for your lifestyle and needs.</p>
+                        <a href="products.html" class="guide-card__link">Compare Options</a>
+                    </article>
+                </div>
+                <!-- Explore More Row -->
+                <div class="guides-row fade-in" aria-label="Explore More">
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 4;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9Z"/><path d="M8 12a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1Z"/><path d="M9 8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"/></svg></div>
+                        <h3>Mental Wellness</h3>
+                        <p>Discover strategies for managing mood changes and maintaining emotional balance throughout your cycle.</p>
+                        <a href="mental-health.html" class="guide-card__link">Learn More</a>
+                    </article>
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 5;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7a7 7 0 0 1-7 7l-1 1Z"/></svg></div>
+                        <h3>Sustainable Choices</h3>
+                        <p>Explore eco-friendly period products and learn how to make sustainable choices for your body and the planet.</p>
+                        <a href="sustainable.html" class="guide-card__link">Discover Options</a>
+                    </article>
+                    <article class="guide-card" tabindex="0" style="--stagger-index: 6;">
+                        <div class="guide-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5v2H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1h-2V7a5 5 0 0 0-5-5Z"/><path d="M12 12a3 3 0 0 0-3 3v2a3 3 0 0 0 6 0v-2a3 3 0 0 0-3-3Z"/></svg></div>
+                        <h3>Exercise & Movement</h3>
+                        <p>Learn how to adapt your exercise routine to work with your cycle, not against it.</p>
+                        <a href="exercise.html" class="guide-card__link">Start Moving</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="philosophy" class="section bg-soft">
+            <div class="container philosophy-section fade-in visible">
+                <div class="philosophy-section__text">
+                    <h2>Our Philosophy.</h2>
+                    <p>Menstrual health is health. It deserves to be treated with care, dignity, and scientific rigor. We're committed to creating a space that is not only informative but also beautiful and empowering.</p>
+                    <ul class="icon-list">
+                        <li>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                            <div><strong>Trustworthy Information.</strong> All our content is reviewed by experts for accuracy and clarity.</div>
+                        </li>
+                        <li>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                            <div><strong>Holistic & Inclusive.</strong> We connect physical, mental, and emotional health for every body.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="philosophy-section__image">
+                    <img src="assets/images/groupe.png" alt="A diverse group of smiling women talking together.">
+                </div>
+            </div>
+        </section>
+
+        <section class="section testimonials-section bg-soft">
+            <div class="container">
+                <div class="section__header fade-up">
+                    <span class="section__badge">Testimonials</span>
+                    <h2 class="section-title">What Our Community Says</h2>
+                    <p class="section__description">Real stories from people who have found support and guidance through their menstrual journey.</p>
+                </div>
+
+                <div class="testimonials-slider">
+                    <div class="testimonial-track" id="testimonial-track">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"This guide helped me understand my body better. The information is clear and non-judgmental."</p>
+                            <cite>- Sarah, 22</cite>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Finally, a resource that covers everything! From products to mental health, it's all here."</p>
+                            <cite>- Maria, 28</cite>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"I wish I had this when I was younger. So comprehensive and easy to understand!"</p>
+                            <cite>- Jennifer, 35</cite>
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container newsletter-cta fade-in visible">
+                <h2 class="section-title">Join the Community.</h2>
+                <p>Receive weekly wellness tips, new articles, and community stories straight to your inbox. No spam, just support.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="your.email@example.com" aria-label="Your email address">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Recommended Books Section -->
+        <section class="content-section" style="background: var(--color-bg-soft); position: relative; overflow: hidden;">
+            <div class="decoration-blob decoration-blob-1"></div>
+            <div class="decoration-blob decoration-blob-2"></div>
+            <div class="container">
+                <h2 class="text-center mb-4">Recommended Reading</h2>
+                <p class="text-center mb-4">Expand your knowledge with these essential books on menstrual health</p>
+                
+                <div class="grid-3">
+                    <div class="book-card fade-in">
+                        <div class="book-icon">
+                            <svg class="icon icon-xl icon-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 7h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 11h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Period Power</h3>
+                        <p>A comprehensive guide to understanding your menstrual cycle and harnessing its power for better health and wellbeing.</p>
+                        <a href="https://amzn.to/4ly2vaB" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9V21H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 9H21L19 3H5L3 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 3V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            View on Amazon
+                        </a>
+                    </div>
+                    
+                    <div class="book-card fade-in">
+                        <div class="book-icon">
+                            <svg class="icon icon-xl icon-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 11h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>The Menstrual Cycle Guide</h3>
+                        <p>Essential reading for anyone wanting to understand the science behind menstruation and how to optimize health throughout your cycle.</p>
+                        <a href="https://amzn.to/406Lj3b" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9V21H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 9H21L19 3H5L3 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 3V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            View on Amazon
+                        </a>
+                    </div>
+                    
+                    <div class="book-card fade-in">
+                        <div class="book-icon">
+                            <svg class="icon icon-xl icon-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M9 11h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M9 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Women's Health & Periods</h3>
+                        <p>A holistic approach to menstrual health, covering nutrition, exercise, and lifestyle factors that impact your monthly cycle.</p>
+                        <a href="https://amzn.to/46w6m31" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9V21H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 9H21L19 3H5L3 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 3V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            View on Amazon
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p class="text-light" style="font-size: 0.9rem;">
+                        <em>Note: As an Amazon Associate, we may earn from qualifying purchases.</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with loading placeholder -->
+    <div id="page-footer">
+        <div class="loading-placeholder">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Component Loading Script -->
+    <script>
+        // Function to load components
+        async function loadComponent(id, url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const html = await response.text();
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = html;
+                    // Dispatch event when component is loaded
+                    window.dispatchEvent(new CustomEvent(`${id}-loaded`));
+                }
+            } catch (error) {
+                console.error(`Error loading ${url}:`, error);
+                // Show error state in placeholder
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = `
+                        <div class="component-error">
+                            <p>Failed to load component. Please refresh the page.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('page-header', 'components/header.html');
+            loadComponent('page-footer', 'components/footer.html');
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Animated text in hero -->
+    <script>
+    const animatedText = document.querySelector('.animated-text');
+    if(animatedText){
+        const phrases = [
+            'A modern guide to menstrual wellness.',
+            'Empowering you with science-backed knowledge.',
+            'Your cycle, your power, your guide.'
+        ];
+        let idx = 0;
+        setInterval(()=>{
+            idx = (idx+1)%phrases.length;
+            animatedText.textContent = phrases[idx];
+        }, 4000);
+    }
+    // Show skip link on focus
+    const skipLink = document.querySelector('.skip-to-main');
+    skipLink.addEventListener('focus',()=>{skipLink.style.left='16px'});
+    skipLink.addEventListener('blur',()=>{skipLink.style.left='-999px'});
+    </script>
+
+    <script>
+        // Smooth scroll for hero CTA
+        const heroCTA = document.querySelector('.hero__cta a');
+        if (heroCTA) {
+            heroCTA.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = 'guides';
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+
+        // Staggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

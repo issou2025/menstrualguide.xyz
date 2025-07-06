@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page: Sustainable Periods -->
+    <!-- Function: To educate users on the environmental impact of disposable period products and promote sustainable alternatives with an interactive calculator. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Periods: Eco-Friendly Menstrual Products & Tips | Menstrual Guide</title>
+    <meta name="description" content="Learn how to have a zero-waste, sustainable period. Compare the environmental impact of menstrual cups vs. disposables and use our calculator to see your potential savings.">
+    <link rel="canonical" href="https://www.yourdomain.com/sustainable.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & CORE STYLES */
+        :root {
+            --color-primary: #8667a8; --color-secondary: #e6a4b4; --color-accent: #6fab9c; /* Green for this page */ --color-accent-light: #d4e6e1; --color-text: #333333; --color-text-light: #555555; --color-bg: #ffffff; --color-bg-soft: #f7fbf9; --font-heading: 'Poppins', sans-serif; --font-body: 'Lato', sans-serif; --container-width: 1140px; --transition-speed: 0.3s ease;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--color-text); background-color: var(--color-bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); } h2 { font-size: clamp(2rem, 4vw, 2.5rem); } h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1rem; color: var(--color-text-light); }
+        a { color: var(--color-secondary); text-decoration: none; transition: color var(--transition-speed); }
+        a:hover { color: var(--color-primary); }
+        img { max-width: 100%; height: auto; display: block; } ul { list-style: none; }
+        .container { max-width: var(--container-width); margin-left: auto; margin-right: auto; padding: 0 1.5rem; }
+        .section { padding: 5rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .bg-soft { background-color: var(--color-bg-soft); }
+        .btn { display: inline-block; padding: 0.85rem 2rem; background-color: var(--color-primary); color: white; border-radius: 50px; font-weight: bold; transition: all var(--transition-speed); border: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background-color: var(--color-secondary); border-color: var(--color-secondary); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(134, 103, 168, 0.1); padding: 2rem; transition: all var(--transition-speed); overflow: hidden; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(134, 103, 168, 0.15); }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* HEADER & FOOTER */
+        .header { position: sticky; top: 0; width:100%; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .header__logo { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; font-weight: 700; }
+        .header__nav { display: block; } .header__nav ul { display: flex; gap: 2rem; } .header__nav a { font-weight: 700; color: var(--color-text-light); position: relative; padding: 0.25rem 0; }
+        .header__nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-secondary); transition: width var(--transition-speed); }
+        .header__nav a:hover::after, .header__nav a.active::after { width: 100%; }
+        .header__actions { display: flex; align-items: center; gap: 1rem; }
+        .language-switcher button { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); border-radius: 5px; padding: 0.3rem 0.6rem; cursor: pointer; font-weight: bold; }
+        .header__burger { display: none; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+        .header__burger span { display: block; width: 25px; height: 3px; background-color: var(--color-primary); margin: 5px 0; transition: all var(--transition-speed); }
+        .footer { background-color: var(--color-bg-soft); color: var(--color-text-light); padding: 4rem 0 2rem; border-top: 4px solid var(--color-accent-light); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-column h4 { color: var(--color-primary); }
+        .footer-bottom { text-align: center; border-top: 1px solid #e0d8e9; padding-top: 2rem; }
+
+        /* PAGE-SPECIFIC STYLES: SUSTAINABLE PAGE */
+        .page-header { text-align: center; padding: 4rem 0; background-color: var(--color-bg-soft); }
+        .page-header h1 { color: var(--color-accent); }
+        .page-header p { max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .info-card { text-align: center; }
+        .info-card__icon { font-size: 3rem; margin-bottom: 1rem; color: var(--color-accent); }
+        .info-card__number { font-size: 2.5rem; font-weight: 700; color: var(--color-primary); }
+
+        .calculator-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center; background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(134, 103, 168, 0.1); }
+        .calculator-form label { display: block; font-weight: 700; margin-bottom: 0.5rem; }
+        .calculator-form input { width: 100%; padding: 0.75rem; border: 2px solid var(--color-accent-light); border-radius: 8px; font-size: 1.1rem; margin-bottom: 1rem; }
+        .calculator-form button { width: 100%; background-color: var(--color-accent); border-color: var(--color-accent); }
+        .calculator-results { border-left: 3px solid var(--color-accent-light); padding-left: 3rem; }
+        .calculator-results p { font-size: 1.1rem; }
+        .calculator-results strong { font-size: 1.8rem; color: var(--color-accent); display: block; }
+        #results-text { min-height: 150px; transition: opacity var(--transition-speed); }
+
+        .tips-list li { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%236fab9c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center; padding-left: 2.5rem; margin-bottom: 1.5rem; }
+        
+        /* RESPONSIVE STYLES */
+        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } .header__nav { display: none; } }
+        @media (max-width: 768px) {
+            .section { padding: 3rem 0; }
+            .header__nav.active { display: block; position: fixed; top: 80px; left: 0; width: 100%; height: calc(100vh - 80px); background-color: var(--color-bg); transform: translateX(0); padding: 2rem; }
+            .nav-open .header__nav { transform: translateX(0); }
+            body.nav-open { overflow: hidden; }
+            .header__burger { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .calculator-container { grid-template-columns: 1fr; }
+            .calculator-results { border-left: none; padding-left: 0; border-top: 3px solid var(--color-accent-light); padding-top: 2rem; margin-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="page-header"></header>
+    <main>
+        <section class="page-header">
+            <div class="container fade-in">
+                <h1>A Greener Period is Possible</h1>
+                <p>Each year, billions of disposable pads and tampons end up in landfills and oceans. But you have the power to change that. Let's explore how small changes can make a huge environmental impact.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">The Unseen Impact</h2>
+                <div class="info-grid">
+                    <div class="card info-card">
+                        <div class="info-card__icon">🗑️</div>
+                        <div class="info-card__number">20 Billion</div>
+                        <p>Pads, tampons, and applicators are disposed of in North America each year.</p>
+                    </div>
+                    <div class="card info-card">
+                        <div class="info-card__icon">⏱️</div>
+                        <div class="info-card__number">500+ Years</div>
+                        <p>The time it takes for a single plastic-containing pad or tampon to decompose.</p>
+                    </div>
+                    <div class="card info-card">
+                        <div class="info-card__icon">💧</div>
+                        <div class="info-card__number">90% Plastic</div>
+                        <p>The estimated percentage of plastic content in a typical disposable menstrual pad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-soft">
+            <div class="container fade-in">
+                <h2 class="section-title">Calculate Your Impact</h2>
+                <div class="calculator-container">
+                    <div class="calculator-form" role="form">
+                        <h3>See Your Potential</h3>
+                        <p>Enter how many years you've been menstruating (or expect to) and see the difference one switch can make.</p>
+                        <label for="years-input">Number of Years Menstruating:</label>
+                        <input type="number" id="years-input" placeholder="e.g., 5" min="1" max="40">
+                        <button id="calculate-btn" class="btn">Calculate My Impact</button>
+                    </div>
+                    <div class="calculator-results" aria-live="polite">
+                        <div id="results-text">
+                            <p>Your results will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container fade-in">
+                <h2 class="section-title">Simple Steps to a Zero-Waste Period</h2>
+                <ul class="tips-list">
+                    <li>
+                        <h3>Switch to Reusables</h3>
+                        <p>A menstrual cup, disc, or period underwear can replace thousands of disposables over their lifetime, saving you money and saving the planet from waste.</p>
+                    </li>
+                    <li>
+                        <h3>Choose Plastic-Free Disposables</h3>
+                        <p>If you're not ready for reusables, look for tampons without plastic applicators and pads made from organic, biodegradable materials like cotton and bamboo.</p>
+                    </li>
+                    <li>
+                        <h3>Advocate and Educate</h3>
+                        <p>Talk to friends and family about sustainable options. The more people who make the switch, the bigger our collective impact becomes.</p>
+                    </li>
+                    <li>
+                        <h3>Rethink Your Period Care Routine</h3>
+                        <p>Opt for reusable cloth wipes instead of disposable ones, and store your products in a washable cloth bag instead of a single-use plastic one.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="page-footer"></footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CORE SCRIPT ---
+            const loadComponent = (id, url) => fetch(url).then(r => r.text()).then(d => { document.getElementById(id).innerHTML = d; if(id==='page-header') setupHeader(); }).catch(e => console.error(e));
+            const setupHeader = () => {
+                const burger = document.getElementById('burger-menu'), nav = document.querySelector('.header__nav');
+                if (burger) burger.addEventListener('click', () => { document.body.classList.toggle('nav-open'); burger.setAttribute('aria-expanded', !burger.matches('[aria-expanded="true"]')); nav.classList.toggle('active'); });
+                document.querySelectorAll('#main-nav a').forEach(l => { if (l.getAttribute('href') === (window.location.pathname.split('/').pop()||'index.html')) l.classList.add('active'); });
+            };
+            loadComponent('page-header', 'components/header.html'); loadComponent('page-footer', 'components/footer.html');
+
+            // --- PAGE-SPECIFIC SCRIPT: IMPACT CALCULATOR ---
+            const calculateBtn = document.getElementById('calculate-btn');
+            const yearsInput = document.getElementById('years-input');
+            const resultsText = document.getElementById('results-text');
+
+            if (calculateBtn) {
+                calculateBtn.addEventListener('click', () => {
+                    const years = parseInt(yearsInput.value);
+                    if (isNaN(years) || years < 1 || years > 50) {
+                        resultsText.innerHTML = `<p>Please enter a valid number between 1 and 50.</p>`;
+                        return;
+                    }
+                    
+                    const PADS_PER_CYCLE = 22;
+                    const CYCLES_PER_YEAR = 12;
+                    
+                    const totalDisposables = (years * CYCLES_PER_YEAR * PADS_PER_CYCLE).toLocaleString();
+                    const totalCups = Math.ceil(years / 10); // One cup lasts up to 10 years.
+
+                    resultsText.style.opacity = 0;
+                    setTimeout(() => {
+                        resultsText.innerHTML = `
+                            <p>Over ${years} years, you would use approximately:</p>
+                            <strong>${totalDisposables}</strong>
+                            <p>disposable pads or tampons.</p>
+                            <p>By switching to a menstrual cup, you would use only:</p>
+                            <strong>${totalCups}</strong>
+                            <p>reusable cups. That's a huge difference!</p>
+                        `;
+                        resultsText.style.opacity = 1;
+                    }, 300);
+                });
+            }
+
+            // Intersection Observer
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1 };
+            const appearOnScroll = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+            }, appearOptions);
+            faders.forEach(fader => appearOnScroll.observe(fader));
+        });
+    </script>
+</body>
+</html>

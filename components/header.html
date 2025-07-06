@@ -1,0 +1,55 @@
+<!-- Component: Header (Updated with Image Logo) -->
+<div class="container header-container">
+    <a href="index.html" class="header__logo" aria-label="Menstrual Guide Homepage">
+        <!-- MODIFICATION : L'ancien SVG est remplacé par cette balise <img> -->
+        <img src="assets/images/logo.svg" alt="Menstrual Guide" class="header__logo-img" onerror="this.style.display='none'">
+        <span>MenstrualGuide.xyz</span>
+    </a>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" tabindex="-1" aria-hidden="true"></div>
+    
+    <nav class="header__nav" id="main-nav">
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Learn</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cycle.html">Understanding Your Cycle</a></li>
+                    <li><a href="first-period.html">First Period Guide</a></li>
+                    <li><a href="conditions.html">Health Conditions</a></li>
+                    <li><a href="perimenopause.html">Perimenopause</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Wellness</a>
+                <ul class="dropdown-menu">
+                    <li><a href="mental-health.html">Mental Health</a></li>
+                    <li><a href="diet.html">Diet & Nutrition</a></li>
+                    <li><a href="exercise.html">Exercise & Fitness</a></li>
+                    <li><a href="partner-guide.html">Partner's Guide</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Care</a>
+                <ul class="dropdown-menu">
+                    <li><a href="products.html">Product Guide</a></li>
+                    <li><a href="hygiene.html">Hygiene Tips</a></li>
+                    <li><a href="sustainable.html">Eco-Friendly Options</a></li>
+                    <li><a href="reviews.html">Product Reviews</a></li>
+                </ul>
+            </li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-lang-mobile">
+            <button aria-label="Switch Language to French">FR</button>
+        </div>
+    </nav>
+    
+    <button class="header__burger" id="burger-menu" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
