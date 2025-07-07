@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Understanding Your Menstrual Cycle - Phases & Tracking | MenstrualGuide.xyz</title>
-    <meta name="description" content="Learn about the four phases of the menstrual cycle, common symptoms, and how to track your period effectively. Expert guidance from MenstrualGuide.xyz">
+    <meta name="description" content="Learn about the four phases of your menstrual cycle and how to track your period effectively. Expert advice from MenstrualGuide.xyz.">
     <meta name="keywords" content="menstrual cycle phases, period tracking, follicular phase, ovulation, luteal phase, menstruation">
     
     <!-- Google AdSense -->
@@ -19,7 +19,7 @@
     
     <!-- Open Graph -->
     <meta property="og:title" content="Understanding Your Menstrual Cycle - MenstrualGuide.xyz">
-    <meta property="og:description" content="Comprehensive guide to menstrual cycle phases, symptoms, and tracking methods.">
+    <meta property="og:description" content="A complete guide to the phases of the menstrual cycle, symptoms, and tracking methods.">
     <meta property="og:url" content="https://www.menstrualguide.xyz/cycle.html">
     <meta property="og:type" content="article">
     
@@ -27,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Shared Styles -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/shared.css">
     
     <!-- Page Specific Styles -->
@@ -53,19 +54,53 @@
         .phase-content { display: none; animation: contentFadeIn 0.5s ease-in-out; }
         .phase-content.active { display: block; }
         @keyframes contentFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .phase-details { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .phase-details__info h3 { color: var(--color-secondary); font-size: 1.8rem; }
+        .phase-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .phase-details__info h3 {
+            color: var(--color-secondary);
+            font-size: 1.8rem;
+        }
         .phase-details__info h4 { font-size: 1.1rem; color: var(--color-text-light); font-weight: 400; }
-        .phase-details__info .info-block { margin-top: 1.5rem; }
-        .phase-details__info .info-block strong { color: var(--color-primary-dark); }
-        .phase-details__image img { border-radius: 16px; }
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .fact-card { text-align: center; }
-        .fact-card__icon { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--color-secondary); }
+        .phase-details__info .info-block {
+            margin-top: 1.5rem;
+        }
+        .phase-details__info .info-block strong {
+            color: var(--color-primary-dark);
+        }
+        .phase-details__image img {
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .fact-card {
+            text-align: center;
+        }
+        .fact-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-secondary);
+        }
         @media (max-width: 992px) {
-            .phase-details { grid-template-columns: 1fr; }
-            .phase-details__image { order: -1; margin-bottom: 2rem; }
-            .phase-details__image img { max-width: 450px; margin: 0 auto; }
+            .phase-details {
+                grid-template-columns: 1fr;
+            }
+            .phase-details__image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            .phase-details__image img {
+                max-width: 450px;
+                margin: 0 auto;
+            }
             .header__nav { display: none; }
         }
         @media (max-width: 768px) {
@@ -169,7 +204,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Understanding Your Menstrual Cycle</h1>
-            <p>A comprehensive guide to the phases, symptoms, and tracking methods</p>
+            <p>A complete guide to the phases, symptoms, and tracking methods</p>
         </div>
     </section>
 
@@ -180,91 +215,111 @@
             <div class="container">
                 <div class="text-center mb-4">
                     <h2>What is the Menstrual Cycle?</h2>
-                    <p class="lead">The menstrual cycle is a natural process that prepares your body for pregnancy each month. Understanding your cycle helps you better manage your health and recognize what's normal for you.</p>
+                    <p class="lead">The menstrual cycle is a natural process that prepares your body for a potential pregnancy each month. Understanding your cycle helps you manage your health better and recognize what's normal for you.</p>
                 </div>
                 
                 <div class="info-box">
                     <h4>Average Cycle Length</h4>
-                    <p>A typical menstrual cycle lasts between 21-35 days, with 28 days being the average. Every person's cycle is unique, and variations are completely normal.</p>
+                    <p>A typical menstrual cycle lasts between 21 and 35 days, with 28 days being the average. Everyone's cycle is unique, and variations are completely normal.</p>
                 </div>
             </div>
         </section>
 
         <!-- Cycle Phases Section -->
-        <section class="content-section">
+        <section id="cycle-phases" class="content-section bg-soft">
             <div class="container">
                 <h2 class="text-center mb-4">The Four Phases of Your Cycle</h2>
                 
-                <div class="phase-timeline">
-                    <div class="phase-item">
-                        <div class="phase-dot"></div>
-                        <strong>Menstrual</strong>
-                        <p>Days 1-5</p>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-dot"></div>
-                        <strong>Follicular</strong>
-                        <p>Days 1-13</p>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-dot"></div>
-                        <strong>Ovulation</strong>
-                        <p>Day 14</p>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-dot"></div>
-                        <strong>Luteal</strong>
-                        <p>Days 15-28</p>
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="menstrual">Menstrual Phase</button>
+                        <button class="tab" data-tab="follicular">Follicular Phase</button>
+                        <button class="tab" data-tab="ovulation">Ovulation</button>
+                        <button class="tab" data-tab="luteal">Luteal Phase</button>
                     </div>
                 </div>
-                
-                <div class="grid-2 mt-4">
-                    <div class="card fade-in">
-                        <h3>1. Menstrual Phase</h3>
-                        <p><strong>Duration:</strong> 3-7 days</p>
-                        <p>This is when you have your period. The lining of your uterus (endometrium) sheds through your vagina.</p>
-                        <ul class="styled-list">
-                            <li>Bleeding and cramping</li>
-                            <li>Fatigue and low energy</li>
-                            <li>Mood changes</li>
-                            <li>Headaches or migraines</li>
-                        </ul>
+
+                <div id="menstrual" class="tab-content active">
+                    <div class="phase-details">
+                        <div class="phase-details__info">
+                            <h3>Menstrual Phase (Days 1-5)</h3>
+                            <p>This is your period. The lining of your uterus (endometrium) sheds and flows out of the vagina.</p>
+                            <div class="info-block">
+                                <strong>Common symptoms:</strong>
+                                <ul class="styled-list">
+                                    <li>Bleeding and cramps</li>
+                                    <li>Fatigue and low energy</li>
+                                    <li>Mood changes</li>
+                                    <li>Headaches or migraines</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phase-details__image">
+                            <img src="assets/images/cycle-infographic.png" alt="Illustration of the menstrual phase">
+                        </div>
                     </div>
-                    
-                    <div class="card fade-in">
-                        <h3>2. Follicular Phase</h3>
-                        <p><strong>Duration:</strong> 13-14 days</p>
-                        <p>Your body prepares for ovulation. Follicles in your ovaries mature and estrogen levels rise.</p>
-                        <ul class="styled-list">
-                            <li>Increased energy</li>
-                            <li>Better mood</li>
-                            <li>Clearer skin</li>
-                            <li>Higher libido</li>
-                        </ul>
+                </div>
+
+                <div id="follicular" class="tab-content">
+                    <div class="phase-details">
+                        <div class="phase-details__info">
+                            <h3>Follicular Phase (Days 1-13)</h3>
+                            <p>Your body prepares for ovulation. Follicles in your ovaries mature, and estrogen levels rise.</p>
+                            <div class="info-block">
+                                <strong>Signs and feelings:</strong>
+                                <ul class="styled-list">
+                                    <li>Rising energy levels</li>
+                                    <li>Improved mood</li>
+                                    <li>Clearer skin</li>
+                                    <li>Increase in libido</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phase-details__image">
+                             <img src="assets/images/cycle-infographic.png" alt="Illustration of the follicular phase">
+                        </div>
                     </div>
-                    
-                    <div class="card fade-in">
-                        <h3>3. Ovulation Phase</h3>
-                        <p><strong>Duration:</strong> 24-48 hours</p>
-                        <p>A mature egg is released from the ovary. This is your most fertile time.</p>
-                        <ul class="styled-list">
-                            <li>Slight temperature rise</li>
-                            <li>Clear, stretchy discharge</li>
-                            <li>Mild pelvic pain</li>
-                            <li>Increased sex drive</li>
-                        </ul>
+                </div>
+
+                <div id="ovulation" class="tab-content">
+                    <div class="phase-details">
+                        <div class="phase-details__info">
+                            <h3>Ovulation (Day 14)</h3>
+                            <p>A mature egg is released from the ovary. This is your most fertile time.</p>
+                            <div class="info-block">
+                                <strong>Signs and feelings:</strong>
+                                <ul class="styled-list">
+                                    <li>Slight rise in body temperature</li>
+                                    <li>Clear, stretchy cervical mucus</li>
+                                    <li>Mild pelvic pain (Mittelschmerz)</li>
+                                    <li>Increased sex drive</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phase-details__image">
+                            <img src="assets/images/cycle-infographic.png" alt="Illustration of ovulation">
+                        </div>
                     </div>
-                    
-                    <div class="card fade-in">
-                        <h3>4. Luteal Phase</h3>
-                        <p><strong>Duration:</strong> 14 days</p>
-                        <p>After ovulation, progesterone rises to maintain the uterine lining. If pregnancy doesn't occur, hormone levels drop.</p>
-                        <ul class="styled-list">
-                            <li>PMS symptoms</li>
-                            <li>Breast tenderness</li>
-                            <li>Bloating</li>
-                            <li>Mood swings</li>
-                        </ul>
+                </div>
+
+                <div id="luteal" class="tab-content">
+                    <div class="phase-details">
+                        <div class="phase-details__info">
+                            <h3>Luteal Phase (Days 15-28)</h3>
+                            <p>After ovulation, progesterone rises to maintain the uterine lining. If pregnancy doesn't occur, hormone levels drop.</p>
+                            <div class="info-block">
+                                <strong>PMS symptoms:</strong>
+                                <ul class="styled-list">
+                                    <li>Premenstrual symptoms (PMS)</li>
+                                    <li>Tender breasts</li>
+                                    <li>Bloating</li>
+                                    <li>Mood swings</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phase-details__image">
+                           <img src="assets/images/cycle-infographic.png" alt="Illustration of the luteal phase">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -274,9 +329,8 @@
         <section class="content-section">
             <div class="container">
                 <h2 class="text-center mb-4">Common Symptoms Throughout Your Cycle</h2>
-                
                 <div class="grid-3">
-                    <div class="symptom-card fade-in">
+                    <div class="card fade-in">
                         <h4>Physical Symptoms</h4>
                         <ul class="styled-list">
                             <li>Cramps and abdominal pain</li>
@@ -288,27 +342,27 @@
                         </ul>
                     </div>
                     
-                    <div class="symptom-card fade-in">
+                    <div class="card fade-in">
                         <h4>Emotional Symptoms</h4>
                         <ul class="styled-list">
                             <li>Mood swings</li>
                             <li>Irritability</li>
                             <li>Anxiety</li>
-                            <li>Depression</li>
+                            <li>Low mood</li>
                             <li>Difficulty concentrating</li>
                             <li>Changes in libido</li>
                         </ul>
                     </div>
                     
-                    <div class="symptom-card fade-in">
+                    <div class="card fade-in">
                         <h4>When to See a Doctor</h4>
                         <ul class="styled-list">
-                            <li>Periods lasting more than 7 days</li>
+                            <li>Periods lasting longer than 7 days</li>
                             <li>Very heavy bleeding</li>
                             <li>Severe pain</li>
                             <li>Irregular cycles</li>
                             <li>Bleeding between periods</li>
-                            <li>No period for 3+ months</li>
+                            <li>Missing a period for 3+ months</li>
                         </ul>
                     </div>
                 </div>
@@ -316,15 +370,14 @@
         </section>
 
         <!-- Tracking Section -->
-        <section class="content-section">
+        <section class="content-section bg-soft">
             <div class="container">
                 <h2 class="text-center mb-4">How to Track Your Cycle</h2>
-                
                 <div class="grid-2">
                     <div class="card fade-in">
-                        <div class="card-icon">📱</div>
+                        <div class="icon-circle"><span class="icon">📱</span></div>
                         <h3>Digital Tracking</h3>
-                        <p>Use period tracking apps to log symptoms, predict cycles, and identify patterns. Popular apps include:</p>
+                        <p>Use period tracking apps to log your symptoms, predict your cycles, and identify patterns. Popular options include:</p>
                         <ul>
                             <li>Clue</li>
                             <li>Flo</li>
@@ -334,9 +387,9 @@
                     </div>
                     
                     <div class="card fade-in">
-                        <div class="card-icon">📝</div>
+                        <div class="icon-circle"><span class="icon">📝</span></div>
                         <h3>Manual Tracking</h3>
-                        <p>Keep a journal or calendar to track:</p>
+                        <p>Keep a journal or calendar to note:</p>
                         <ul>
                             <li>Start and end dates</li>
                             <li>Flow intensity</li>
@@ -345,20 +398,6 @@
                             <li>Physical activity</li>
                         </ul>
                     </div>
-                </div>
-                
-                <!-- Product Recommendation Box -->
-                <div class="info-box mt-4" style="background: linear-gradient(135deg, var(--color-bg-soft) 0%, white 100%);">
-                    <h4>💡 Tracking Made Easy</h4>
-                    <p>Stay prepared with our recommended organic cotton pads - perfect for different flow days throughout your cycle.</p>
-                    <a href="https://amzn.to/3IgkZxf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 1rem;">
-                        View Product →
-                    </a>
-                </div>
-                
-                <div class="text-center mt-4">
-                    <a href="products.html" class="btn btn-primary">Explore Period Products</a>
-                    <a href="hygiene.html" class="btn btn-outline">Learn About Hygiene</a>
                 </div>
             </div>
         </section>

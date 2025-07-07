@@ -1,24 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
 /* Shared Styles for All Pages */
 
 /* CSS Variables */
 :root {
-    --color-primary: #7c5f99;
-    --color-primary-dark: #5a4470;
-    --color-secondary: #e89b93;
-    --color-accent: #f4c2c2;
-    --color-bg: #fdfbf9;
-    --color-bg-soft: #f9f5f2;
-    --color-text: #2c2c2c;
-    --color-text-light: #6c6c6c;
+    --color-primary: #7c5f99; /* Deep, sophisticated purple */
+    --color-primary-dark: #5a4470; /* Darker shade for hovers */
+    --color-primary-light: #a48fb7; /* Lighter shade for accents */
+    --color-secondary: #e89b93; /* Soft, warm coral */
+    --color-secondary-light: #f4c2c2; /* Lighter, rosy pink */
+    --color-accent: #6fab9c; /* Calming, muted green */
+    --color-bg: #fdfbf9; /* Warm, off-white background */
+    --color-bg-soft: #f9f5f2; /* Slightly darker soft background */
+    --color-text: #2c2c2c; /* Dark, readable text */
+    --color-text-light: #6c6c6c; /* Lighter grey for secondary text */
     --color-white: #ffffff;
     --color-divider: #e5e5e5;
-    --font-heading: 'Playfair Display', serif;
+    --color-success: #70a9a1;
+    --color-error: #e57373;
+
+    --font-heading: 'Poppins', serif; /* Changed to Poppins */
+    --font-subheading: 'Playfair Display', serif; /* For a classic touch */
     --font-body: 'Inter', sans-serif;
+
     --container-width: 1200px;
     --transition-speed: 0.3s;
-    --gradient-primary: linear-gradient(135deg, #7c5f99 0%, #9b7bb8 100%);
-    --gradient-secondary: linear-gradient(135deg, #e89b93 0%, #f4c2c2 100%);
-    --gradient-accent: linear-gradient(135deg, #f4c2c2 0%, #ffd4d4 100%);
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
+    --shadow-lg: 0 15px 30px rgba(0,0,0,0.15);
+
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #a4d4cb 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 10px;
+    border: 2px solid var(--color-bg-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
 }
 
 /* Reset & Base */
@@ -33,6 +69,7 @@ html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    font-size: 16px; /* Set a consistent base font size */
 }
 
 body {
@@ -43,6 +80,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-wrap: break-word; /* Prevent long words from breaking layout */
 }
 
 /* Prevent iOS zoom on input focus */
@@ -55,10 +93,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     line-height: 1.2;
     margin-bottom: 1rem;
+    font-weight: 600; /* Bolder headings */
 }
 
-h1 { font-size: clamp(2rem, 5vw, 2.5rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h1 { font-size: clamp(2.2rem, 5vw, 3rem); } /* Adjusted sizes */
+h2 { font-size: clamp(1.8rem, 4vw, 2.2rem); font-family: var(--font-subheading); } /* Use Playfair for H2 */
 h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 h4 { font-size: clamp(1.1rem, 2.5vw, 1.25rem); }
 
@@ -373,68 +412,73 @@ a, button, input, select, textarea {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
+    padding: 0.85rem 1.75rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-md);
     font-weight: 600;
-    text-align: center;
-    transition: all var(--transition-speed);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    border: none;
-    font-size: 1rem;
+    transition: all 0.25s ease-out;
     position: relative;
     overflow: hidden;
-    min-height: 44px;
-    white-space: nowrap;
+    z-index: 1;
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+    z-index: -1;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 
 .btn:hover::before {
-    width: 300px;
-    height: 300px;
+    opacity: 0.15;
 }
 
 .btn-primary {
     background: var(--gradient-primary);
-    color: white;
+    color: var(--color-white);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(124,95,153,0.3);
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
 }
 
 .btn-secondary {
     background: var(--gradient-secondary);
-    color: white;
+    color: var(--color-white);
 }
 
 .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(232,155,147,0.3);
+    color: var(--color-white);
+    background: linear-gradient(135deg, #d68a81 0%, #e89b93 100%);
 }
 
 .btn-outline {
-    background: transparent;
-    border: 2px solid var(--color-primary);
+    background-color: transparent;
     color: var(--color-primary);
+    border-color: var(--color-primary-light);
 }
 
 .btn-outline:hover {
-    background: var(--color-primary);
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
 }
 
 .btn .icon {
@@ -584,6 +628,27 @@ a, button, input, select, textarea {
 }
 
 /* Tabs */
+.tabs-container {
+    position: relative;
+}
+
+.tabs-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--color-bg));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-speed);
+}
+
+.tabs-container.is-scrollable::after {
+    opacity: 1;
+}
+
 .tabs {
     display: flex;
     gap: 0.5rem;
@@ -591,7 +656,11 @@ a, button, input, select, textarea {
     border-bottom: 2px solid var(--color-divider);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
+    scrollbar-width: none; /* Hide scrollbar for a cleaner look */
+}
+
+.tabs::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 .tab {
@@ -728,7 +797,7 @@ a, button, input, select, textarea {
 @media (max-width: 480px) {
     /* Further reduce font sizes on very small screens */
     body {
-        font-size: 15px;
+        font-size: 0.95rem; /* Use rem for scalability */
     }
     
     .btn {

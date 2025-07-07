@@ -240,25 +240,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ========== Tab Functionality ==========
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
+    // ========== General Tab Component Functionality ==========
+    function initializeTabs() {
+        const tabContainers = document.querySelectorAll('.tabs');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = tab.dataset.target;
-            
-            // Update active states
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            tab.classList.add('active');
-            const targetContent = document.getElementById(target);
-            if (targetContent) {
-                targetContent.classList.add('active');
+        tabContainers.forEach(container => {
+            const tabs = container.querySelectorAll('.tab');
+            const tabContents = container.parentElement.parentElement.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Deactivate all tabs and content within this group
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Activate the clicked tab and its content
+                    tab.classList.add('active');
+                    const targetContent = document.getElementById(tab.dataset.tab);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+    
+    initializeTabs();
+
+
+    // ========== Check if Tabs are Scrollable ==========
+    function checkTabsScrollable() {
+        const tabsContainers = document.querySelectorAll('.tabs-container');
+        
+        tabsContainers.forEach(container => {
+            const tabs = container.querySelector('.tabs');
+            if (tabs) {
+                if (tabs.scrollWidth > tabs.clientWidth) {
+                    container.classList.add('is-scrollable');
+                } else {
+                    container.classList.remove('is-scrollable');
+                }
             }
         });
-    });
+    }
+
+    // Run on load and resize
+    checkTabsScrollable();
+    window.addEventListener('resize', debounce(checkTabsScrollable, 150));
+
+
+    // ========== Utility Functions ==========
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
     // ========== Form Handling ==========
     const forms = document.querySelectorAll('form');
@@ -344,19 +386,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========== Performance Optimization ==========
-    // Debounce function for scroll events
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
     // Throttle function for resize events
     function throttle(func, limit) {
         let inThrottle;
@@ -409,4 +438,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     console.log('MenstrualGuide.xyz - All systems initialized ✓');
-}); 
+});
+
+// Polyfill for smooth scrolling if needed
+if (!('scrollBehavior' in document.documentElement.style)) {
+    // You can add a polyfill library here if needed for older browsers
+} 
