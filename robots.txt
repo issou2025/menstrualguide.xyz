@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.menstrualguide.xyz/sitemap.xml
+Host: https://www.menstrualguide.xyz
