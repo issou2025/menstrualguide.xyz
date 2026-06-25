@@ -1,446 +1,286 @@
-// Main JavaScript for MenstrualGuide.xyz
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ========== Component Loading ==========
+// Modern global JavaScript for MenstrualGuide.xyz
+(function () {
+    'use strict';
+
+    const qs = (selector, scope = document) => scope.querySelector(selector);
+    const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadGlobalComponents();
+        initAnimations();
+        initSmoothAnchors();
+        initTabs();
+        initGenericFaq();
+        initForms();
+        initLazyImages();
+    });
+
+    async function loadGlobalComponents() {
+        await Promise.all([
+            loadComponent('page-header', 'components/header.html'),
+            loadComponent('page-footer', 'components/footer.html')
+        ]);
+
+        initHeader();
+        initFooter();
+    }
+
     async function loadComponent(id, url) {
+        const host = document.getElementById(id);
+        if (!host || host.dataset.componentLoaded === 'true') return;
+
         try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const html = await response.text();
-            const element = document.getElementById(id);
-            if (element) {
-                element.innerHTML = html;
-                // Dispatch event when component is loaded
-                window.dispatchEvent(new CustomEvent(`${id}-loaded`));
-                
-                // Initialize component-specific functionality
-                if (id === 'page-header') {
-                    initializeHeader();
-                } else if (id === 'page-footer') {
-                    initializeFooter();
-                }
-            }
+            const response = await fetch(url, { cache: 'no-cache' });
+            if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+            host.innerHTML = await response.text();
+            host.dataset.componentLoaded = 'true';
+            window.dispatchEvent(new CustomEvent(`${id}-loaded`));
         } catch (error) {
-            console.error(`Error loading ${url}:`, error);
-            const element = document.getElementById(id);
-            if (element) {
-                element.innerHTML = `
-                    <div class="component-error">
-                        <p>Failed to load component. Please refresh the page.</p>
-                    </div>
-                `;
-            }
+            console.error(`Unable to load ${url}`, error);
+            host.innerHTML = '<div class="component-error">Navigation component could not load. Please refresh the page.</div>';
         }
     }
 
-    // Load header and footer
-    loadComponent('page-header', 'components/header.html');
-    loadComponent('page-footer', 'components/footer.html');
+    function initHeader() {
+        const header = document.getElementById('page-header');
+        const burger = qs('#burger-menu');
+        const nav = qs('#main-nav');
+        const overlay = qs('#mobile-menu-overlay');
+        const dropdowns = qsa('.dropdown');
+        if (!header || !burger || !nav) return;
 
-    // ========== Header Functionality ==========
-    function initializeHeader() {
-        const header = document.querySelector('.header');
-        const burger = document.querySelector('.header__burger');
-        const nav = document.querySelector('.header__nav');
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        // Scroll behavior
-        let lastScroll = 0;
-        const scrollThreshold = 50;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            // Add scrolled class for shadow
-            if (currentScroll > 0) {
-                header?.classList.add('scrolled');
-            } else {
-                header?.classList.remove('scrolled');
-            }
-            
-            // Hide/show header based on scroll direction
-            if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-                header?.classList.add('hide');
-            } else {
-                header?.classList.remove('hide');
-            }
-            
-            lastScroll = currentScroll;
-        });
-        
-        // Mobile menu toggle
-        if (burger && nav) {
-            burger.addEventListener('click', () => {
-                burger.classList.toggle('active');
-                nav.classList.toggle('active');
-                document.body.classList.toggle('menu-open');
-            });
-        }
-        
-        // Handle dropdowns in mobile view
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            if (toggle) {
-                toggle.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 992) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    }
-                });
-            }
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (nav && nav.classList.contains('active')) {
-                if (!nav.contains(e.target) && !burger.contains(e.target)) {
-                    nav.classList.remove('active');
-                    burger?.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                }
-            }
-        });
-        
-        // Close mobile menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 992) {
-                nav?.classList.remove('active');
-                burger?.classList.remove('active');
-                document.body.classList.remove('menu-open');
+        const setMenuState = (open) => {
+            nav.classList.toggle('active', open);
+            burger.classList.toggle('active', open);
+            document.body.classList.toggle('menu-open', open);
+            burger.setAttribute('aria-expanded', String(open));
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            if (overlay) overlay.setAttribute('aria-hidden', String(!open));
+            if (!open) {
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('active');
+                    const toggle = qs('.dropdown-toggle', dropdown);
+                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
                 });
             }
-        });
-        
-        // Set active navigation item
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.header__nav a').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-                link.classList.add('active');
-            }
-        });
-    }
+        };
 
-    // ========== Footer Functionality ==========
-    function initializeFooter() {
-        const newsletterForm = document.querySelector('.footer__form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const input = newsletterForm.querySelector('.footer__input');
-                if (input && input.value) {
-                    // Show success message
-                    const button = newsletterForm.querySelector('.footer__button');
-                    const originalText = button.textContent;
-                    button.textContent = 'Thank you!';
-                    button.disabled = true;
-                    
-                    // Reset after 3 seconds
-                    setTimeout(() => {
-                        input.value = '';
-                        button.textContent = originalText;
-                        button.disabled = false;
-                    }, 3000);
+        burger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            setMenuState(!nav.classList.contains('active'));
+        });
+
+        overlay?.addEventListener('click', () => setMenuState(false));
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setMenuState(false);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!nav.classList.contains('active')) return;
+            if (!nav.contains(event.target) && !burger.contains(event.target)) setMenuState(false);
+        });
+
+        dropdowns.forEach(dropdown => {
+            const toggle = qs('.dropdown-toggle', dropdown);
+            if (!toggle) return;
+
+            toggle.addEventListener('click', (event) => {
+                if (window.innerWidth > 1100) return;
+                event.preventDefault();
+                const isOpen = dropdown.classList.toggle('active');
+                toggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        });
+
+        qsa('#main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const href = link.getAttribute('href') || '';
+                if (!href.startsWith('#') && window.innerWidth <= 1100 && !link.classList.contains('dropdown-toggle')) {
+                    setMenuState(false);
                 }
             });
-        }
+        });
+
+        window.addEventListener('resize', debounce(() => {
+            if (window.innerWidth > 1100) setMenuState(false);
+        }, 150));
+
+        setActiveNavigation();
+
+        const updateHeaderShadow = () => {
+            header.classList.toggle('scrolled', window.scrollY > 8);
+        };
+        updateHeaderShadow();
+        window.addEventListener('scroll', throttle(updateHeaderShadow, 100), { passive: true });
     }
 
-    // ========== Fade-in Animations ==========
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: unobserve after animation
-                // observer.unobserve(entry.target);
+    function setActiveNavigation() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        qsa('#main-nav a').forEach(link => {
+            const href = link.getAttribute('href');
+            const active = href === currentPage || (currentPage === '' && href === 'index.html');
+            link.classList.toggle('active', active);
+            if (active) {
+                const parent = link.closest('.dropdown');
+                const toggle = parent ? qs('.dropdown-toggle', parent) : null;
+                if (toggle) toggle.classList.add('active');
             }
         });
-    }, observerOptions);
+    }
 
-    // Observe all fade-in elements
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
-    });
+    function initFooter() {
+        const form = qs('.footer__form');
+        if (!form) return;
 
-    // ========== Smooth Scroll ==========
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const input = qs('.footer__input', form);
+            const button = qs('.footer__button', form);
+            if (!input || !button || !input.value.trim()) return;
 
-    // ========== Testimonials Slider ==========
-    const testimonialTrack = document.getElementById('testimonial-track');
-    const testimonialDots = document.querySelectorAll('.slider-dots .dot');
-    let currentTestimonial = 0;
-    let testimonialInterval;
+            const originalText = button.textContent;
+            button.textContent = 'Joined ✓';
+            button.disabled = true;
+            form.reset();
 
-    function showTestimonial(index) {
-        if (!testimonialTrack) return;
-        
-        currentTestimonial = index;
-        const offset = -100 * index;
-        testimonialTrack.style.transform = `translateX(${offset}%)`;
-        
-        // Update dots
-        testimonialDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2600);
         });
     }
 
-    function nextTestimonial() {
-        const totalTestimonials = testimonialDots.length;
-        showTestimonial((currentTestimonial + 1) % totalTestimonials);
-    }
+    function initAnimations() {
+        const animated = qsa('.fade-in, .fade-up');
+        if (!animated.length) return;
 
-    // Auto-advance testimonials
-    if (testimonialTrack) {
-        testimonialInterval = setInterval(nextTestimonial, 5000);
-        
-        // Dot click handlers
-        testimonialDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(testimonialInterval);
-                showTestimonial(index);
-                testimonialInterval = setInterval(nextTestimonial, 5000);
-            });
-        });
-        
-        // Pause on hover
-        const slider = document.querySelector('.testimonials-slider');
-        if (slider) {
-            slider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
-            slider.addEventListener('mouseleave', () => {
-                testimonialInterval = setInterval(nextTestimonial, 5000);
-            });
+        if (!('IntersectionObserver' in window)) {
+            animated.forEach(el => el.classList.add('visible'));
+            return;
         }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        animated.forEach(el => observer.observe(el));
     }
 
-    // ========== FAQ Toggles ==========
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('active');
+    function initSmoothAnchors() {
+        qsa('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (event) => {
+                const targetId = anchor.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+                const target = qs(targetId);
+                if (!target) return;
+
+                event.preventDefault();
+                const headerHeight = document.getElementById('page-header')?.offsetHeight || 0;
+                const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
         });
-    });
+    }
 
-    // ========== General Tab Component Functionality ==========
-    function initializeTabs() {
-        const tabContainers = document.querySelectorAll('.tabs');
-
-        tabContainers.forEach(container => {
-            const tabs = container.querySelectorAll('.tab');
-            const tabContents = container.parentElement.parentElement.querySelectorAll('.tab-content');
+    function initTabs() {
+        qsa('.tabs').forEach(tabList => {
+            const tabs = qsa('.tab', tabList);
+            if (!tabs.length) return;
+            const wrapper = tabList.closest('.tabs-container') || tabList.parentElement;
+            const contents = qsa('.tab-content', wrapper?.parentElement || document);
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Deactivate all tabs and content within this group
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-
-                    // Activate the clicked tab and its content
+                    tabs.forEach(item => item.classList.remove('active'));
+                    contents.forEach(content => content.classList.remove('active'));
                     tab.classList.add('active');
-                    const targetContent = document.getElementById(tab.dataset.tab);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
+                    const target = document.getElementById(tab.dataset.tab);
+                    if (target) target.classList.add('active');
                 });
             });
         });
     }
-    
-    initializeTabs();
 
-
-    // ========== Check if Tabs are Scrollable ==========
-    function checkTabsScrollable() {
-        const tabsContainers = document.querySelectorAll('.tabs-container');
-        
-        tabsContainers.forEach(container => {
-            const tabs = container.querySelector('.tabs');
-            if (tabs) {
-                if (tabs.scrollWidth > tabs.clientWidth) {
-                    container.classList.add('is-scrollable');
-                } else {
-                    container.classList.remove('is-scrollable');
-                }
-            }
+    function initGenericFaq() {
+        qsa('.faq-item').forEach(item => {
+            const question = qs('.faq-question', item) || item;
+            question.addEventListener('click', () => item.classList.toggle('active'));
         });
     }
 
-    // Run on load and resize
-    checkTabsScrollable();
-    window.addEventListener('resize', debounce(checkTabsScrollable, 150));
+    function initForms() {
+        qsa('form').forEach(form => {
+            if (form.classList.contains('footer__form') || form.dataset.jsReady === 'true') return;
+            form.dataset.jsReady = 'true';
 
+            form.addEventListener('submit', (event) => {
+                if (form.getAttribute('action')) return;
+                event.preventDefault();
+                const requiredFields = qsa('input[required], textarea[required], select[required]', form);
+                const invalid = requiredFields.filter(field => !String(field.value || '').trim());
+                requiredFields.forEach(field => field.classList.toggle('error', invalid.includes(field)));
+                if (invalid.length) return;
 
-    // ========== Utility Functions ==========
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // ========== Form Handling ==========
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            // Skip newsletter forms as they're handled separately
-            if (form.classList.contains('footer__form') || form.classList.contains('newsletter-form')) {
-                return;
-            }
-            
-            e.preventDefault();
-            
-            // Basic form validation
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                } else {
-                    input.classList.remove('error');
-                }
-            });
-            
-            if (isValid) {
-                // Show success message
-                const button = form.querySelector('button[type="submit"]');
+                const button = qs('button[type="submit"], .btn', form);
+                if (!button) return;
                 const originalText = button.textContent;
-                button.textContent = 'Thank you!';
+                button.textContent = 'Sent ✓';
                 button.disabled = true;
-                
-                // Reset form after delay
+                form.reset();
                 setTimeout(() => {
-                    form.reset();
                     button.textContent = originalText;
                     button.disabled = false;
-                }, 3000);
-            }
+                }, 2600);
+            });
         });
-    });
+    }
 
-    // ========== Lazy Loading Images ==========
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
+    function initLazyImages() {
+        const images = qsa('img[data-src]');
+        if (!images.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            images.forEach(img => {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            });
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
                 const img = entry.target;
                 img.src = img.dataset.src;
                 img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
+                observer.unobserve(img);
+            });
         });
-    });
 
-    lazyImages.forEach(img => imageObserver.observe(img));
-
-    // ========== Mobile Touch Improvements ==========
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    document.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        // Swipe functionality for testimonials
-        if (testimonialTrack) {
-            if (touchEndX < touchStartX - 50) {
-                // Swipe left
-                nextTestimonial();
-            } else if (touchEndX > touchStartX + 50) {
-                // Swipe right
-                const totalTestimonials = testimonialDots.length;
-                showTestimonial((currentTestimonial - 1 + totalTestimonials) % totalTestimonials);
-            }
-        }
+        images.forEach(img => observer.observe(img));
     }
 
-    // ========== Performance Optimization ==========
-    // Throttle function for resize events
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
+    function debounce(fn, delay) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
         };
     }
 
-    // ========== Accessibility Improvements ==========
-    // Skip to main content
-    const skipLink = document.querySelector('.skip-to-main');
-    if (skipLink) {
-        skipLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const main = document.querySelector('main');
-            if (main) {
-                main.tabIndex = -1;
-                main.focus();
-            }
-        });
+    function throttle(fn, limit) {
+        let locked = false;
+        return (...args) => {
+            if (locked) return;
+            locked = true;
+            fn(...args);
+            setTimeout(() => { locked = false; }, limit);
+        };
     }
-
-    // ========== Error Handling ==========
-    window.addEventListener('error', (e) => {
-        console.error('Global error:', e.error);
-        // You could send errors to a logging service here
-    });
-
-    // ========== Page-Specific Initialization ==========
-    const currentPageName = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
-    
-    // Initialize page-specific features
-    switch(currentPageName) {
-        case 'index':
-            console.log('Homepage initialized');
-            break;
-        case 'products':
-            console.log('Products page initialized');
-            break;
-        case 'cycle':
-            console.log('Cycle page initialized');
-            break;
-        // Add more page-specific initializations as needed
-    }
-
-    console.log('MenstrualGuide.xyz - All systems initialized ✓');
-});
-
-// Polyfill for smooth scrolling if needed
-if (!('scrollBehavior' in document.documentElement.style)) {
-    // You can add a polyfill library here if needed for older browsers
-} 
+})();
