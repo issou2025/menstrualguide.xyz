@@ -1,19 +1,21 @@
-<!-- Component: Header (Updated with Image Logo) -->
+<!-- Component: Modern Header -->
+<link rel="stylesheet" href="assets/css/modern-system.css">
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" tabindex="-1" aria-hidden="true"></div>
 <div class="container header-container">
-    <a href="index.html" class="header__logo" aria-label="Menstrual Guide Home Page">
-        <!-- MODIFICATION : L'ancien SVG est remplacé par cette balise <img> -->
+    <a href="index.html" class="header__logo" aria-label="MenstrualGuide.xyz home">
         <img src="assets/images/logo.svg" alt="Menstrual Guide" class="header__logo-img" onerror="this.style.display='none'">
-        <span>MenstrualGuide.xyz</span>
+        <span class="header__brand-text">
+            <strong>MenstrualGuide.xyz</strong>
+            <small>Cycle care made clear</small>
+        </span>
     </a>
-    
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay" tabindex="-1" aria-hidden="true"></div>
-    
-    <nav class="header__nav" id="main-nav">
+
+    <nav class="header__nav" id="main-nav" aria-label="Main navigation">
         <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
+            <li><a href="first-period.html">Start</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Learn</a>
+                <a href="cycle.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Learn</a>
                 <ul class="dropdown-menu">
                     <li><a href="cycle.html">Understanding Your Cycle</a></li>
                     <li><a href="first-period.html">First Period Guide</a></li>
@@ -24,16 +26,16 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Wellness</a>
+                <a href="mental-health.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Wellness</a>
                 <ul class="dropdown-menu">
                     <li><a href="mental-health.html">Mental Health</a></li>
                     <li><a href="diet.html">Diet & Nutrition</a></li>
                     <li><a href="exercise.html">Exercise & Fitness</a></li>
-                    <li><a href="partner-guide.html">Partner's Guide</a></li>
+                    <li><a href="partner-guide.html">Partner Guide</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Care</a>
+                <a href="products.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Care</a>
                 <ul class="dropdown-menu">
                     <li><a href="products.html">Product Guide</a></li>
                     <li><a href="hygiene.html">Hygiene Tips</a></li>
@@ -43,13 +45,11 @@
             </li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="products.html" class="header__cta">Compare Products</a></li>
         </ul>
-        <div class="nav-lang-mobile">
-            <button aria-label="Switch Language to English">EN</button>
-        </div>
     </nav>
-    
-    <button class="header__burger" id="burger-menu" aria-label="Open/close menu" aria-expanded="false">
+
+    <button class="header__burger" id="burger-menu" type="button" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
